@@ -11,6 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SssRouteImport } from './routes/sss'
+import { Route as PerdeYikamaRouteImport } from './routes/perde-yikama'
+import { Route as KoltukYikamaRouteImport } from './routes/koltuk-yikama'
+import { Route as IletisimRouteImport } from './routes/iletisim'
+import { Route as HizmetBolgeleriRouteImport } from './routes/hizmet-bolgeleri'
+import { Route as HaliYikamaRouteImport } from './routes/hali-yikama'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -23,6 +29,36 @@ const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
   path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SssRoute = SssRouteImport.update({
+  id: '/sss',
+  path: '/sss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerdeYikamaRoute = PerdeYikamaRouteImport.update({
+  id: '/perde-yikama',
+  path: '/perde-yikama',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KoltukYikamaRoute = KoltukYikamaRouteImport.update({
+  id: '/koltuk-yikama',
+  path: '/koltuk-yikama',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IletisimRoute = IletisimRouteImport.update({
+  id: '/iletisim',
+  path: '/iletisim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HizmetBolgeleriRoute = HizmetBolgeleriRouteImport.update({
+  id: '/hizmet-bolgeleri',
+  path: '/hizmet-bolgeleri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HaliYikamaRoute = HaliYikamaRouteImport.update({
+  id: '/hali-yikama',
+  path: '/hali-yikama',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,41 +67,135 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/hali-yikama': typeof HaliYikamaRoute
+  '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
+  '/iletisim': typeof IletisimRoute
+  '/koltuk-yikama': typeof KoltukYikamaRoute
+  '/perde-yikama': typeof PerdeYikamaRoute
+  '/sss': typeof SssRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hali-yikama': typeof HaliYikamaRoute
+  '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
+  '/iletisim': typeof IletisimRoute
+  '/koltuk-yikama': typeof KoltukYikamaRoute
+  '/perde-yikama': typeof PerdeYikamaRoute
+  '/sss': typeof SssRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/hali-yikama': typeof HaliYikamaRoute
+  '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
+  '/iletisim': typeof IletisimRoute
+  '/koltuk-yikama': typeof KoltukYikamaRoute
+  '/perde-yikama': typeof PerdeYikamaRoute
+  '/sss': typeof SssRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/robots.txt' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/hali-yikama'
+    | '/hizmet-bolgeleri'
+    | '/iletisim'
+    | '/koltuk-yikama'
+    | '/perde-yikama'
+    | '/sss'
+    | '/robots.txt'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/robots.txt' | '/sitemap.xml'
-  id: '__root__' | '/' | '/robots.txt' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/hali-yikama'
+    | '/hizmet-bolgeleri'
+    | '/iletisim'
+    | '/koltuk-yikama'
+    | '/perde-yikama'
+    | '/sss'
+    | '/robots.txt'
+    | '/sitemap.xml'
+  id:
+    | '__root__'
+    | '/'
+    | '/hali-yikama'
+    | '/hizmet-bolgeleri'
+    | '/iletisim'
+    | '/koltuk-yikama'
+    | '/perde-yikama'
+    | '/sss'
+    | '/robots.txt'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HaliYikamaRoute: typeof HaliYikamaRoute
+  HizmetBolgeleriRoute: typeof HizmetBolgeleriRoute
+  IletisimRoute: typeof IletisimRoute
+  KoltukYikamaRoute: typeof KoltukYikamaRoute
+  PerdeYikamaRoute: typeof PerdeYikamaRoute
+  SssRoute: typeof SssRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hali-yikama': {
+      id: '/hali-yikama'
+      path: '/hali-yikama'
+      fullPath: '/hali-yikama'
+      preLoaderRoute: typeof HaliYikamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hizmet-bolgeleri': {
+      id: '/hizmet-bolgeleri'
+      path: '/hizmet-bolgeleri'
+      fullPath: '/hizmet-bolgeleri'
+      preLoaderRoute: typeof HizmetBolgeleriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iletisim': {
+      id: '/iletisim'
+      path: '/iletisim'
+      fullPath: '/iletisim'
+      preLoaderRoute: typeof IletisimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/koltuk-yikama': {
+      id: '/koltuk-yikama'
+      path: '/koltuk-yikama'
+      fullPath: '/koltuk-yikama'
+      preLoaderRoute: typeof KoltukYikamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perde-yikama': {
+      id: '/perde-yikama'
+      path: '/perde-yikama'
+      fullPath: '/perde-yikama'
+      preLoaderRoute: typeof PerdeYikamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sss': {
+      id: '/sss'
+      path: '/sss'
+      fullPath: '/sss'
+      preLoaderRoute: typeof SssRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -75,11 +205,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -87,6 +217,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HaliYikamaRoute: HaliYikamaRoute,
+  HizmetBolgeleriRoute: HizmetBolgeleriRoute,
+  IletisimRoute: IletisimRoute,
+  KoltukYikamaRoute: KoltukYikamaRoute,
+  PerdeYikamaRoute: PerdeYikamaRoute,
+  SssRoute: SssRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

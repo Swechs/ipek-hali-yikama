@@ -5,11 +5,15 @@ export const Route = createFileRoute('/robots.txt')({
     handlers: {
       GET: async ({ request }) => {
         const origin = new URL(request.url).origin
+        // noindex for preview/staging — remove Disallow when going live on production domain
         const body = [
           'User-agent: *',
-          'Allow: /',
+          'Disallow: /',
           '',
           `Sitemap: ${origin}/sitemap.xml`,
+          '',
+          '# TASLAK: Bu robots.txt canli domaine gecildiginde guncellenmeli.',
+          '# Canli domain icin: Allow: / olarak degistirilmeli.',
         ].join('\n')
         return new Response(body, {
           headers: {
