@@ -1,14 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/")(  {
+export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "İpek Halı Yıkama — Isparta | Halı Yıkama 130 TL/m²" },
-      {
-        name: "description",
-        content:
-          "Isparta İpek Halı Yıkama: Halı yıkama 130 TL/m², minimum 780 TL, ücretsiz alım-teslimat, 2–3 günde teslim. Koltuk yıkama 2.500 TL. Perde yıkama. 0246 242 99 99",
-      },
+      { name: "description", content: "Isparta İpek Halı Yıkama: Halı yıkama 130 TL/m², minimum 780 TL, ücretsiz alım-teslimat, 2–3 günde teslim. Koltuk yıkama 2.500 TL. 0246 242 99 99" },
     ],
   }),
   component: HomePage,
@@ -17,493 +13,187 @@ export const Route = createFileRoute("/")(  {
 function HomePage() {
   return (
     <>
-      {/* JSON-LD: LocalBusiness */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://ispartaipekhaliyikama.com/#business",
-            name: "İpek Halı Yıkama",
-            description:
-              "Isparta merkezde profesyonel halı yıkama, koltuk yıkama ve perde yıkama hizmeti. Ücretsiz halı alım ve teslimat servisi.",
-            url: "https://ispartaipekhaliyikama.com",
-            telephone: "+90-246-242-99-99",
-            areaServed: [
-              { "@type": "City", name: "Isparta" },
-              { "@type": "AdministrativeArea", name: "Atabey" },
-              { "@type": "AdministrativeArea", name: "Eğirdir" },
-            ],
-            hasOfferCatalog: {
-              "@type": "OfferCatalog",
-              name: "Yıkama Hizmetleri",
-              itemListElement: [
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Halı Yıkama",
-                    description: "Profesyonel halı yıkama hizmeti, ücretsiz alım-teslimat",
-                  },
-                  priceSpecification: {
-                    "@type": "UnitPriceSpecification",
-                    price: "130",
-                    priceCurrency: "TRY",
-                    unitText: "m²",
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Koltuk Takımı Yıkama",
-                    description: "Yerinde profesyonel koltuk yıkama hizmeti",
-                  },
-                  price: "2500",
-                  priceCurrency: "TRY",
-                },
-              ],
-            },
-          }),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://ispartaipekhaliyikama.com/#business",
+        name: "İpek Halı Yıkama", description: "Isparta'da profesyonel halı, koltuk ve perde yıkama. Ücretsiz alım-teslimat.",
+        url: "https://ispartaipekhaliyikama.com", telephone: "+90-246-242-99-99",
+        areaServed: [{ "@type": "City", name: "Isparta" }, { "@type": "AdministrativeArea", name: "Atabey" }, { "@type": "AdministrativeArea", name: "Eğirdir" }],
+        hasOfferCatalog: { "@type": "OfferCatalog", name: "Yıkama Hizmetleri", itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Halı Yıkama" }, priceSpecification: { "@type": "UnitPriceSpecification", price: "130", priceCurrency: "TRY", unitText: "m²" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Koltuk Takımı Yıkama" }, price: "2500", priceCurrency: "TRY" },
+        ]},
+      }) }} />
 
-      {/* HERO */}
-      <section
-        style={{
-          background: "linear-gradient(135deg, var(--color-ipek-green-50) 0%, var(--color-ipek-cream-100) 100%)",
-          padding: "4rem 1rem 3rem",
-        }}
-      >
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr", gap: "2rem" }}>
-          <div style={{ maxWidth: "640px" }}>
-            <p
-              style={{
-                display: "inline-block",
-                padding: "0.25rem 0.75rem",
-                backgroundColor: "var(--color-ipek-green-100)",
-                color: "var(--color-ipek-green-700)",
-                borderRadius: "2rem",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
-                marginBottom: "1rem",
-              }}
-            >
-              Isparta ve Çevresinde Hizmet
-            </p>
-            <h1 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", marginBottom: "1rem", lineHeight: 1.15 }}>
-              Halılarınız Bizimle
-              <br />
-              <span style={{ color: "var(--color-ipek-green-600)" }}>Tertemiz Olsun</span>
-            </h1>
-            <p style={{ fontSize: "1.0625rem", color: "var(--color-ipek-warm-600)", marginBottom: "1.5rem", lineHeight: 1.7 }}>
-              Profesyonel halı yıkama hizmeti. Halınızı kapınızdan alıyor, tertemiz ve hijyenik şekilde teslim ediyoruz.{" "}
-              <strong>Ücretsiz alım ve teslimat.</strong>
-            </p>
+      {/* ═══ HERO ═══ */}
+      <section className="ipek-hero">
+        <div className="ipek-hero-content">
+          <div className="ipek-badge" style={{ background: "rgba(93,212,168,0.15)", color: "var(--g3)", marginBottom: "1.25rem", border: "1px solid rgba(93,212,168,0.2)" }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Isparta ve Çevresinde Hizmet
+          </div>
 
-            {/* Price highlights */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-                gap: "0.75rem",
-                marginBottom: "1.5rem",
-              }}
-            >
-              <PriceCard label="Halı Yıkama" price="130 TL/m²" sub="Minimum 780 TL" />
-              <PriceCard label="Koltuk Takımı" price="2.500 TL" sub="Takım fiyatı" />
-              <PriceCard label="Teslimat" price="2–3 Gün" sub="Ücretsiz servis" />
+          <h1>
+            Halılarınız Bizimle<br />
+            <span>Tertemiz Olsun</span>
+          </h1>
+
+          <p className="ipek-hero-sub">
+            Profesyonel halı yıkama hizmeti. Halınızı kapınızdan alıyor, tertemiz ve hijyenik şekilde teslim ediyoruz. <strong style={{ color: "#fff" }}>Ücretsiz alım ve teslimat.</strong>
+          </p>
+
+          <div className="ipek-hero-prices">
+            <div className="ipek-hero-price-card">
+              <div className="label">Halı Yıkama</div>
+              <div className="value">130 TL<span style={{ fontSize: "0.75rem", fontWeight: 400, opacity: 0.7 }}>/m²</span></div>
+              <div className="sub">Minimum 780 TL</div>
             </div>
-
-            {/* CTA buttons */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-              <a
-                href="tel:02462429999"
-                data-event="phone_click"
-                data-event-category="hero"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.875rem 1.5rem",
-                  backgroundColor: "var(--color-ipek-green-700)",
-                  color: "#fff",
-                  borderRadius: "0.5rem",
-                  fontWeight: 600,
-                  fontSize: "0.9375rem",
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                Hemen Ara
-              </a>
-              <a
-                href="https://wa.me/902462429999?text=Merhaba%2C%20hal%C4%B1%20y%C4%B1kama%20i%C3%A7in%20randevu%20almak%20istiyorum."
-                target="_blank"
-                rel="noopener noreferrer"
-                data-event="whatsapp_click"
-                data-event-category="hero"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.875rem 1.5rem",
-                  backgroundColor: "#25D366",
-                  color: "#fff",
-                  borderRadius: "0.5rem",
-                  fontWeight: 600,
-                  fontSize: "0.9375rem",
-                }}
-              >
-                WhatsApp ile Yazın
-              </a>
-              <a
-                href="/hali-yikama#hesaplayici"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.875rem 1.5rem",
-                  border: "1px solid var(--color-ipek-green-700)",
-                  color: "var(--color-ipek-green-700)",
-                  borderRadius: "0.5rem",
-                  fontWeight: 600,
-                  fontSize: "0.9375rem",
-                }}
-              >
-                Fiyat Hesapla
-              </a>
+            <div className="ipek-hero-price-card">
+              <div className="label">Koltuk Takımı</div>
+              <div className="value">2.500 TL</div>
+              <div className="sub">Takım fiyatı</div>
+            </div>
+            <div className="ipek-hero-price-card">
+              <div className="label">Teslimat</div>
+              <div className="value">2–3 Gün</div>
+              <div className="sub">Ücretsiz servis</div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* SERVICES */}
-      <section style={{ padding: "4rem 1rem", backgroundColor: "#fff" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <h2 style={{ textAlign: "center", fontSize: "1.75rem", marginBottom: "0.5rem" }}>Hizmetlerimiz</h2>
-          <p style={{ textAlign: "center", color: "var(--color-ipek-warm-600)", marginBottom: "2.5rem", maxWidth: "560px", margin: "0 auto 2.5rem" }}>
-            Isparta ve çevresinde halı, koltuk ve perde yıkama hizmeti veriyoruz.
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
-            <ServiceCard
-              title="Halı Yıkama"
-              desc="Tüm halı türlerinde profesyonel yıkama. 130 TL/m², minimum 780 TL. Ücretsiz alım-teslimat. 2–3 günde tertemiz kapınızda."
-              price="130 TL/m²"
-              href="/hali-yikama"
-              icon="🧹"
-            />
-            <ServiceCard
-              title="Koltuk Yıkama"
-              desc="Koltuk takımınızı yerinde derinlemesine temizliyoruz. Lekeler, kir ve alerjenlerden arındırın."
-              price="2.500 TL"
-              href="/koltuk-yikama"
-              icon="🛋️"
-            />
-            <ServiceCard
-              title="Perde Yıkama"
-              desc="Tül, stor ve kumaş perdelerinizi özenle yıkıyoruz. Fiyat bilgisi için bize ulaşın."
-              price="Teklif Alın"
-              href="/perde-yikama"
-              icon="🪟"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section style={{ padding: "4rem 1rem", backgroundColor: "var(--color-ipek-cream-50)" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <h2 style={{ textAlign: "center", fontSize: "1.75rem", marginBottom: "2.5rem" }}>
-            Nasıl Çalışır?
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem", textAlign: "center" }}>
-            <StepCard num="1" title="Arayın veya Yazın" desc="Bizi telefonla arayın veya WhatsApp'tan yazın. Halınızın m² bilgisini ve adresinizi iletin." />
-            <StepCard num="2" title="Halınızı Alalım" desc="Belirlenen gün ve saatte halınızı kapınızdan ücretsiz olarak alıyoruz." />
-            <StepCard num="3" title="Profesyonel Yıkama" desc="Halınız özel makinelerle derinlemesine yıkanır ve hijyenik ortamda kurutulur." />
-            <StepCard num="4" title="Teslim Edelim" desc="Halınız 2–3 gün içinde tertemiz olarak kapınıza ücretsiz teslim edilir." />
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICE AREAS */}
-      <section style={{ padding: "4rem 1rem", backgroundColor: "#fff" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontSize: "1.75rem", marginBottom: "0.75rem" }}>Hizmet Bölgelerimiz</h2>
-          <p style={{ color: "var(--color-ipek-warm-600)", marginBottom: "1.5rem", maxWidth: "560px", margin: "0 auto 1.5rem" }}>
-            Isparta merkez ve çevre yerleşimlere halı alım-teslimat servisi sunuyoruz.
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center", marginBottom: "1rem" }}>
-            {[
-              "Isparta Merkez",
-              "Atabey (Salı-Cuma)",
-              "Eğirdir (Salı-Cuma)",
-              "Büyük Gökçeli",
-              "Küçük Gökçeli",
-              "Büyük Hacılar",
-              "Küçük Hacılar",
-              "Ali Köyü",
-              "Harmanören",
-              "Kuleönü",
-              "İslamköy",
-            ].map((area) => (
-              <span
-                key={area}
-                style={{
-                  display: "inline-block",
-                  padding: "0.375rem 0.875rem",
-                  backgroundColor: "var(--color-ipek-green-50)",
-                  color: "var(--color-ipek-green-800)",
-                  borderRadius: "2rem",
-                  fontSize: "0.8125rem",
-                  fontWeight: 500,
-                }}
-              >
-                {area}
-              </span>
-            ))}
-          </div>
-          <a
-            href="/hizmet-bolgeleri"
-            style={{
-              display: "inline-block",
-              marginTop: "0.5rem",
-              color: "var(--color-ipek-green-700)",
-              fontWeight: 600,
-              fontSize: "0.9375rem",
-            }}
-          >
-            Tüm bölgeleri gör &rarr;
-          </a>
-        </div>
-      </section>
-
-      {/* FAQ PREVIEW */}
-      <section style={{ padding: "4rem 1rem", backgroundColor: "var(--color-ipek-cream-50)" }}>
-        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <h2 style={{ textAlign: "center", fontSize: "1.75rem", marginBottom: "2rem" }}>
-            Sık Sorulan Sorular
-          </h2>
-          <FaqItem q="Halı yıkama m² fiyatı ne kadar?" a="Halı yıkama ücretimiz 130 TL/m²'dir. 6 m²'den küçük halılarda minimum ücret 780 TL'dir." />
-          <FaqItem q="Halı alım ve teslimat ücretsiz mi?" a="Evet, Isparta merkez ve belirtilen hizmet bölgelerinde halı alım ve teslimat servisi tamamen ücretsizdir." />
-          <FaqItem q="Halım kaç günde teslim edilir?" a="Normal koşullarda yaklaşık 2 günde, yoğun dönemlerde 2–3 günde teslim edilir." />
-          <FaqItem q="Koltuk yıkama fiyatı ne kadar?" a="Koltuk takımı yıkama ücretimiz 2.500 TL'dir." />
-          <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-            <a
-              href="/sss"
-              style={{
-                display: "inline-block",
-                color: "var(--color-ipek-green-700)",
-                fontWeight: 600,
-              }}
-            >
-              Tüm soruları gör &rarr;
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+            <a href="tel:02462429999" className="ipek-btn ipek-btn-white">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Hemen Ara
+            </a>
+            <a href="https://wa.me/902462429999?text=Merhaba%2C%20hal%C4%B1%20y%C4%B1kama%20i%C3%A7in%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" className="ipek-btn ipek-btn-wa">
+              WhatsApp ile Yazın
+            </a>
+            <a href="/hali-yikama#hesaplayici" className="ipek-btn" style={{ background: "rgba(255,255,255,0.1)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)" }}>
+              Fiyat Hesapla
             </a>
           </div>
         </div>
       </section>
 
-      {/* CTA BANNER */}
-      <section
-        style={{
-          padding: "3rem 1rem",
-          backgroundColor: "var(--color-ipek-green-800)",
-          color: "#fff",
-          textAlign: "center",
-        }}
-      >
-        <h2 style={{ color: "#fff", fontSize: "1.5rem", marginBottom: "0.5rem" }}>
-          Halılarınız İçin Hemen Randevu Alın
-        </h2>
-        <p style={{ opacity: 0.85, marginBottom: "1.5rem", maxWidth: "480px", margin: "0 auto 1.5rem" }}>
-          Bizi arayın veya WhatsApp'tan yazın, halınızı kapınızdan alalım.
-        </p>
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap" }}>
-          <a
-            href="tel:02462429999"
-            data-event="phone_click"
-            data-event-category="cta_banner"
-            style={{
-              padding: "0.875rem 2rem",
-              backgroundColor: "#fff",
-              color: "var(--color-ipek-green-800)",
-              borderRadius: "0.5rem",
-              fontWeight: 700,
-              fontSize: "1rem",
-            }}
-          >
-            0246 242 99 99
-          </a>
-          <a
-            href="https://wa.me/902462429999?text=Merhaba%2C%20randevu%20almak%20istiyorum."
-            target="_blank"
-            rel="noopener noreferrer"
-            data-event="whatsapp_click"
-            data-event-category="cta_banner"
-            style={{
-              padding: "0.875rem 2rem",
-              backgroundColor: "#25D366",
-              color: "#fff",
-              borderRadius: "0.5rem",
-              fontWeight: 700,
-              fontSize: "1rem",
-            }}
-          >
-            WhatsApp
-          </a>
+      {/* ═══ SERVICES ═══ */}
+      <section className="ipek-section" style={{ background: "#fff" }}>
+        <div className="ipek-container">
+          <h2 className="ipek-section-title">Hizmetlerimiz</h2>
+          <p className="ipek-section-desc">Isparta ve çevresinde halı, koltuk ve perde yıkama hizmeti veriyoruz.</p>
+          <div className="ipek-services-grid">
+            <ServiceCard icon={<CarpetIcon />} title="Halı Yıkama" desc="Tüm halı türlerinde profesyonel yıkama. 130 TL/m², minimum 780 TL. Ücretsiz alım-teslimat. 2–3 günde tertemiz kapınızda." price="130 TL/m²" href="/hali-yikama" />
+            <ServiceCard icon={<CouchIcon />} title="Koltuk Yıkama" desc="Koltuk takımınızı derinlemesine temizliyoruz. Lekeler, kir ve alerjenlerden arındırılmış konforlu bir yaşam alanı." price="2.500 TL" href="/koltuk-yikama" />
+            <ServiceCard icon={<CurtainIcon />} title="Perde Yıkama" desc="Tül, stor ve kumaş perdelerinizi özenle yıkıyoruz. Fiyat bilgisi için bize ulaşın, size özel teklif verelim." price="Teklif Alın" href="/perde-yikama" />
+          </div>
         </div>
       </section>
 
-      {/* JSON-LD: FAQPage */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Halı yıkama m² fiyatı ne kadar?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Halı yıkama ücretimiz 130 TL/m²'dir. 6 m²'den küçük halılarda minimum ücret 780 TL'dir.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Halı alım ve teslimat ücretsiz mi?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Evet, Isparta merkez ve belirtilen hizmet bölgelerinde halı alım ve teslimat servisi tamamen ücretsizdir.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Halım kaç günde teslim edilir?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Normal koşullarda yaklaşık 2 günde, yoğun dönemlerde 2–3 günde teslim edilir.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Koltuk yıkama fiyatı ne kadar?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Koltuk takımı yıkama ücretimiz 2.500 TL'dir.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
+      {/* ═══ HOW IT WORKS ═══ */}
+      <section className="ipek-section" style={{ background: "var(--c0)" }}>
+        <div className="ipek-container">
+          <h2 className="ipek-section-title">Nasıl Çalışır?</h2>
+          <p className="ipek-section-desc">4 kolay adımda halılarınız tertemiz.</p>
+          <div className="ipek-steps">
+            <Step n="1" title="Arayın veya Yazın" desc="Bizi arayın veya WhatsApp'tan yazın. Halınızın m² bilgisini ve adresinizi iletin." />
+            <Step n="2" title="Halınızı Alalım" desc="Belirlenen gün ve saatte halınızı kapınızdan ücretsiz olarak alıyoruz." />
+            <Step n="3" title="Profesyonel Yıkama" desc="Halınız özel makinelerle derinlemesine yıkanır, hijyenik ortamda kurutulur." />
+            <Step n="4" title="Teslim Edelim" desc="2–3 gün içinde tertemiz olarak kapınıza ücretsiz teslim edilir." />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SERVICE AREAS ═══ */}
+      <section className="ipek-section" style={{ background: "#fff" }}>
+        <div className="ipek-container" style={{ textAlign: "center" }}>
+          <h2 className="ipek-section-title">Hizmet Bölgelerimiz</h2>
+          <p className="ipek-section-desc">Isparta merkez ve çevre yerleşimlere halı alım-teslimat servisi sunuyoruz.</p>
+          <div className="ipek-area-tags" style={{ marginBottom: "1.5rem" }}>
+            <span className="ipek-area-tag ipek-area-tag-accent">Isparta Merkez</span>
+            <span className="ipek-area-tag ipek-area-tag-accent">Atabey — Salı / Cuma</span>
+            <span className="ipek-area-tag ipek-area-tag-accent">Eğirdir — Salı / Cuma</span>
+            {["Büyük Gökçeli", "Küçük Gökçeli", "Büyük Hacılar", "Küçük Hacılar", "Ali Köyü", "Harmanören", "Kuleönü", "İslamköy"].map(a => <span key={a} className="ipek-area-tag">{a}</span>)}
+          </div>
+          <a href="/hizmet-bolgeleri" style={{ color: "var(--g7)", fontWeight: 600, fontSize: "0.9375rem" }}>Tüm bölgeleri gör &rarr;</a>
+        </div>
+      </section>
+
+      {/* ═══ FAQ ═══ */}
+      <section className="ipek-section" style={{ background: "var(--c0)" }}>
+        <div style={{ maxWidth: "720px", margin: "0 auto", padding: "0 1.25rem" }}>
+          <h2 className="ipek-section-title">Sık Sorulan Sorular</h2>
+          <p className="ipek-section-desc">En çok merak edilen sorular ve yanıtları.</p>
+          <Faq q="Halı yıkama m² fiyatı ne kadar?" a="Halı yıkama ücretimiz 130 TL/m²'dir. 6 m²'den küçük halılarda minimum ücret 780 TL'dir." />
+          <Faq q="Halı alım ve teslimat ücretsiz mi?" a="Evet, Isparta merkez ve belirtilen hizmet bölgelerinde halı alım ve teslimat servisi tamamen ücretsizdir." />
+          <Faq q="Halım kaç günde teslim edilir?" a="Normal koşullarda yaklaşık 2 günde, yoğun dönemlerde 2–3 günde teslim edilir." />
+          <Faq q="Koltuk yıkama fiyatı ne kadar?" a="Koltuk takımı yıkama ücretimiz 2.500 TL'dir." />
+          <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+            <a href="/sss" style={{ color: "var(--g7)", fontWeight: 600 }}>Tüm soruları gör &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CTA BANNER ═══ */}
+      <section className="ipek-cta-banner ipek-section" style={{ textAlign: "center", color: "#fff", padding: "4rem 1.25rem" }}>
+        <div style={{ position: "relative", zIndex: 2 }}>
+          <h2 style={{ color: "#fff", fontSize: "clamp(1.5rem, 3vw, 2rem)", marginBottom: "0.75rem" }}>Halılarınız İçin Hemen Randevu Alın</h2>
+          <p style={{ opacity: 0.8, marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>Bizi arayın veya WhatsApp'tan yazın, halınızı kapınızdan alalım.</p>
+          <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+            <a href="tel:02462429999" className="ipek-btn ipek-btn-white">0246 242 99 99</a>
+            <a href="https://wa.me/902462429999?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" className="ipek-btn ipek-btn-wa">WhatsApp ile Yazın</a>
+          </div>
+        </div>
+      </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Halı yıkama m² fiyatı ne kadar?", acceptedAnswer: { "@type": "Answer", text: "130 TL/m². Minimum 780 TL." } },
+          { "@type": "Question", name: "Halı alım ve teslimat ücretsiz mi?", acceptedAnswer: { "@type": "Answer", text: "Evet, ücretsizdir." } },
+          { "@type": "Question", name: "Halım kaç günde teslim edilir?", acceptedAnswer: { "@type": "Answer", text: "2–3 günde teslim edilir." } },
+          { "@type": "Question", name: "Koltuk yıkama fiyatı ne kadar?", acceptedAnswer: { "@type": "Answer", text: "Koltuk takımı 2.500 TL." } },
+        ],
+      }) }} />
     </>
   );
 }
 
-/* ─── Helper Components ─── */
-
-function PriceCard({ label, price, sub }: { label: string; price: string; sub: string }) {
+/* ─── Components ─── */
+function ServiceCard({ icon, title, desc, price, href }: { icon: React.ReactNode; title: string; desc: string; price: string; href: string }) {
   return (
-    <div
-      style={{
-        padding: "1rem",
-        backgroundColor: "#fff",
-        borderRadius: "0.75rem",
-        border: "1px solid var(--color-ipek-cream-200)",
-      }}
-    >
-      <p style={{ fontSize: "0.75rem", color: "var(--color-ipek-warm-600)", marginBottom: "0.25rem" }}>{label}</p>
-      <p style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--color-ipek-green-800)", marginBottom: "0.125rem" }}>{price}</p>
-      <p style={{ fontSize: "0.75rem", color: "var(--color-ipek-warm-500)" }}>{sub}</p>
-    </div>
-  );
-}
-
-function ServiceCard({ title, desc, price, href, icon }: { title: string; desc: string; price: string; href: string; icon: string }) {
-  return (
-    <a
-      href={href}
-      style={{
-        display: "block",
-        padding: "1.5rem",
-        backgroundColor: "var(--color-ipek-cream-50)",
-        borderRadius: "0.75rem",
-        border: "1px solid var(--color-ipek-cream-200)",
-        textDecoration: "none",
-        transition: "box-shadow 0.2s",
-      }}
-    >
-      <span style={{ fontSize: "2rem", display: "block", marginBottom: "0.75rem" }}>{icon}</span>
-      <h3 style={{ fontSize: "1.125rem", marginBottom: "0.5rem" }}>{title}</h3>
-      <p style={{ fontSize: "0.875rem", color: "var(--color-ipek-warm-600)", lineHeight: 1.6, marginBottom: "0.75rem" }}>{desc}</p>
-      <span
-        style={{
-          display: "inline-block",
-          padding: "0.25rem 0.625rem",
-          backgroundColor: "var(--color-ipek-green-100)",
-          color: "var(--color-ipek-green-800)",
-          borderRadius: "0.375rem",
-          fontSize: "0.8125rem",
-          fontWeight: 600,
-        }}
-      >
-        {price}
-      </span>
+    <a href={href} className="ipek-card ipek-service-card" style={{ textDecoration: "none" }}>
+      <div className="ipek-service-icon">{icon}</div>
+      <h3 style={{ fontSize: "1.25rem", marginBottom: "0.5rem" }}>{title}</h3>
+      <p style={{ fontSize: "0.9375rem", color: "var(--t5)", lineHeight: 1.7, marginBottom: "1rem" }}>{desc}</p>
+      <span className="ipek-badge" style={{ background: "var(--g1)", color: "var(--g7)" }}>{price}</span>
     </a>
   );
 }
 
-function StepCard({ num, title, desc }: { num: string; title: string; desc: string }) {
+function Step({ n, title, desc }: { n: string; title: string; desc: string }) {
   return (
-    <div>
-      <div
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "48px",
-          height: "48px",
-          backgroundColor: "var(--color-ipek-green-700)",
-          color: "#fff",
-          borderRadius: "50%",
-          fontSize: "1.25rem",
-          fontWeight: 700,
-          marginBottom: "0.75rem",
-        }}
-      >
-        {num}
-      </div>
-      <h3 style={{ fontSize: "1rem", marginBottom: "0.375rem" }}>{title}</h3>
-      <p style={{ fontSize: "0.875rem", color: "var(--color-ipek-warm-600)", lineHeight: 1.6 }}>{desc}</p>
+    <div className="ipek-step">
+      <div className="ipek-step-num">{n}</div>
+      <h3>{title}</h3>
+      <p>{desc}</p>
     </div>
   );
 }
 
-function FaqItem({ q, a }: { q: string; a: string }) {
+function Faq({ q, a }: { q: string; a: string }) {
   return (
-    <details
-      style={{
-        marginBottom: "0.75rem",
-        backgroundColor: "#fff",
-        borderRadius: "0.5rem",
-        border: "1px solid var(--color-ipek-cream-200)",
-        overflow: "hidden",
-      }}
-    >
-      <summary
-        style={{
-          padding: "1rem 1.25rem",
-          fontWeight: 600,
-          cursor: "pointer",
-          fontSize: "0.9375rem",
-          color: "var(--color-ipek-green-900)",
-        }}
-      >
-        {q}
-      </summary>
-      <p style={{ padding: "0 1.25rem 1rem", fontSize: "0.875rem", color: "var(--color-ipek-warm-600)", lineHeight: 1.7, margin: 0 }}>{a}</p>
+    <details className="ipek-card ipek-faq">
+      <summary>{q}</summary>
+      <p className="ipek-faq-answer">{a}</p>
     </details>
   );
+}
+
+/* ─── Icons ─── */
+function CarpetIcon() {
+  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/><line x1="2" y1="12" x2="22" y2="12"/></svg>;
+}
+function CouchIcon() {
+  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/><path d="M4 18v2"/><path d="M20 18v2"/></svg>;
+}
+function CurtainIcon() {
+  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 2h20v4H2z"/><path d="M4 6c0 4 2 8 8 12"/><path d="M20 6c0 4-2 8-8 12"/><line x1="12" y1="18" x2="12" y2="22"/></svg>;
 }
