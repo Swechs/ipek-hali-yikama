@@ -193,3 +193,27 @@ position:static!important;display:block!important;width:100%!important;height:au
 .carpet-stage:nth-child(2) .process-photo img{object-position:center 55%}
 .carpet-stage:nth-child(4) .process-photo img{object-position:center 65%}
 }
+
+/* Mobile interaction and readable controls. */
+@media(max-width:850px){
+body[data-menu-open="true"] .ipek-fabs{display:none}
+.ipek-mobile-toggle{flex-shrink:0}
+.ipek-mobile-menu .ipek-btn,.mobile-menu-actions>a{min-height:44px}
+.ipek-mobile-menu a{overflow-wrap:anywhere}
+.calculator-form input{font-size:16px;min-height:44px}
+.page-hero-grid>*,.area-layout>*,.faq-layout>*,.contact-grid>*,.video-grid>*{min-width:0}
+.video-info h3,.contact-card a,.crumbs{overflow-wrap:anywhere}
+.crumbs{flex-wrap:wrap}
+.faq-row summary{min-height:44px;align-items:center}
+.faq-row summary span{flex-shrink:0}
+}
+@media(max-width:560px){
+.ipek-home-actions{flex-wrap:wrap}
+.ipek-home-actions .button{min-height:44px;white-space:normal}
+.button,.ipek-fab{min-height:44px}
+.price-calculator{padding:24px}
+.calc-result{flex-wrap:wrap}
+.calc-result strong{font-size:clamp(28px,9vw,38px);overflow-wrap:anywhere}
+.ipek-fabs{padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}
+.service-hero-photo img{height:auto;aspect-ratio:3/2;object-fit:cover}
+}
