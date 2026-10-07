@@ -12,6 +12,15 @@ export function servicePhoto(title: string) {
 const processVideo = 'https://demokrat32com.tevideo.org/demokrat32-com/uploads/2026/06/binlerce-kisinin-uzerinde-yurudugu-o-halitum-yikama-asamalariyla-simdi-karsinizda-bu-videod.mp4'
 const newsUrl = 'https://www.demokrat32.com/binlerce-kisinin-uzerinde-yurudugu-hali-eski-haline-dondu-ipek-hali-yikamadan-dikkat-ceken-temizlik'
 export const instagramReels: { shortcode: string; title: string }[] = []
+
+function AdditionalVideo() {
+  const [open, setOpen] = useState(false)
+  return <article className="video-card"><div className="video-player">{open ?
+    <iframe src="https://www.youtube-nocookie.com/embed/3diAjIf7sEY?autoplay=1&rel=0" title="Kanal32 — İpek Halı Yıkama" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin"/> :
+    <button type="button" className="video-poster" onClick={() => setOpen(true)} aria-label="Kanal32 İpek Halı Yıkama videosunu oynat"><img src="https://i.ytimg.com/vi/3diAjIf7sEY/hqdefault.jpg" alt="Kanal32 İpek Halı Yıkama videosu" loading="lazy"/><span className="media-play" aria-hidden="true">▶</span><span className="video-poster-label">Kanal32 videosunu oynat</span></button>}
+    </div><div className="video-info"><span>BASINDA İPEK</span><h3>Kanal32’den İpek Halı Yıkama</h3><p>İpek Halı Yıkama hakkında Kanal32’de yayınlanan video.</p><a href="https://www.youtube.com/watch?v=3diAjIf7sEY" target="_blank" rel="noreferrer">Kaynak: Kanal32 · YouTube’da izle ↗</a></div></article>
+}
+
 export function VideoGallery() {
   const [youtubeOpen, setYoutubeOpen] = useState(false)
   const [videoError, setVideoError] = useState(false)
@@ -26,6 +35,7 @@ export function VideoGallery() {
         <article className="video-card"><div className="video-player">{youtubeOpen ? <iframe src="https://www.youtube-nocookie.com/embed/DOM463SSu3A?autoplay=1&rel=0" title="Isparta İpek Halı ve Koltuk Yıkama tanıtım filmi" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin"/> :
           <button type="button" className="video-poster" onClick={() => setYoutubeOpen(true)} aria-label="İpek tanıtım filmini oynat"><img src="https://i.ytimg.com/vi/DOM463SSu3A/hqdefault.jpg" alt="İpek Halı Yıkama tanıtım filminden bir kare" loading="lazy"/><span className="media-play" aria-hidden="true">▶</span><span className="video-poster-label">Tanıtım filmini oynat</span></button>}</div>
           <div className="video-info"><span>İPEK TANITIM FİLMİ</span><h3>Halıdan koltuğa, İpek’i yakından tanıyın</h3><p>Tesis, hizmetler ve halıların bakım yolculuğu.</p><a href="https://www.youtube.com/watch?v=DOM463SSu3A" target="_blank" rel="noreferrer">YouTube’da izle ↗</a></div></article>
+        <AdditionalVideo/>
       </div>
       {instagramReels.length > 0 && <div className="instagram-video-grid">{instagramReels.map(reel => <article className="video-card" key={reel.shortcode}><iframe className="instagram-embed" src={'https://www.instagram.com/reel/' + encodeURIComponent(reel.shortcode) + '/embed/'} title={reel.title} loading="lazy" allow="autoplay; encrypted-media; fullscreen" allowFullScreen/><div className="video-info"><h3>{reel.title}</h3><a href={'https://www.instagram.com/reel/' + reel.shortcode + '/'} target="_blank" rel="noreferrer">Instagram’da izle ↗</a></div></article>)}</div>}
     </div>
