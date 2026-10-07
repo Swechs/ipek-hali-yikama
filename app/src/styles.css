@@ -155,3 +155,11 @@ html[data-motion="paused"] .motion-reveal,html[data-motion="paused"] .motion-rev
 .carpet-stage h3{max-width:none;font-size:19px;margin-top:14px;margin-bottom:8px}
 .carpet-stage p{max-width:none;font-size:14px;line-height:1.6}
 }
+
+/* The sticky header's backdrop filter contains fixed descendants. */
+@media(max-width:850px){
+.ipek-mobile-menu{position:absolute;inset:auto;top:100%;left:0;right:0;bottom:auto;height:calc(100dvh - 82px);max-height:calc(100dvh - 82px);background:#fcf9f7;overflow-y:auto;overscroll-behavior:contain;padding:16px 20px max(24px,env(safe-area-inset-bottom));z-index:101}
+.ipek-mobile-menu>a{flex-shrink:0}
+.mobile-menu-actions{flex-shrink:0;padding-bottom:12px}
+}
+@media(max-width:560px){.ipek-mobile-menu{height:calc(100dvh - 72px);max-height:calc(100dvh - 72px)}}
