@@ -72,9 +72,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       <a href="/" className="ipek-btn ipek-btn-primary">Ana Sayfaya Dön</a>
     </div>
   ),
-  errorComponent: ({ error, reset }: { error: Error; reset: () => void }) => {
+  errorComponent: ({ error, reset }: { error: unknown; reset: () => void }) => {
     const router = useRouter();
-    useEffect(() => { reportHiggsfieldError(error, { boundary: "root" }); }, [error]);
+    useEffect(() => { reportHiggsfieldError(error instanceof Error ? error : new Error(String(error)), { boundary: "root" }); }, [error]);
     return (
       <div className="ipek-section" style={{ minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
         <h1 style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>Bir hata oluştu</h1>
