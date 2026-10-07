@@ -27,7 +27,7 @@ function DirectReel() {
   useEffect(() => { setAutoplay(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) }, [])
   return <article className="video-card"><div className="video-player">
     <video controls playsInline muted autoPlay={autoplay} loop preload="metadata" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/6ca55eb6-ee59-4e15-94da-4fa25e8ea509.jpg" aria-label="İpek Halı Yıkama Instagram videosu"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/8c1a5631-e5a9-4880-9ece-17bcf20d3d20.mp4" type="video/mp4"/></video>
-    </div><div className="video-info"><span>İPEK’TEN GÖRÜNTÜLER</span><h3>İpek’i yakından tanıyın</h3><p>Videoyu burada izleyebilir, oynatıcıdan sesi açabilirsiniz.</p><a href="https://www.instagram.com/reel/DcMK_MWtZev/" target="_blank" rel="noreferrer">Instagram’daki paylaşım ↗</a></div></article>
+    </div><div className="video-info"><span>İPEK’TEN GÖRÜNTÜLER</span><h3>Sıcak su ile halı yıkama</h3><p>Halılarınızı özel sıcak su sistemimizle yıkıyoruz. İpek Halı Yıkama olarak bu hizmeti Türkiye’de sunan tek işletme olduğumuzu belirtiyoruz.</p><a href="https://www.instagram.com/reel/DcMK_MWtZev/" target="_blank" rel="noreferrer">Instagram’daki paylaşım ↗</a></div></article>
 }
 
 export function VideoGallery() {
