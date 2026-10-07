@@ -19,6 +19,7 @@ export function applySecurityHeaders(response: Response): Response {
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "font-src 'self' https://fonts.gstatic.com; " +
       "img-src 'self' data: https:; media-src 'self' https:; " +
+      "frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; " +
       "connect-src 'self' https:; " +
       "base-uri 'self'; form-action 'self'",
   );

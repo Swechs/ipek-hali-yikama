@@ -80,3 +80,47 @@ html[data-motion="paused"] .motion-reveal,html[data-motion="paused"] .motion-rev
 @keyframes reel-float{0%,100%{transform:rotate(-9deg) translateY(0)}50%{transform:rotate(-6deg) translateY(-7px)}}
 @media(max-width:850px){.service-area-map{height:430px}.ipek-instagram-layout{grid-template-columns:1fr;gap:32px}.service-card{min-height:340px}}
 @media(max-width:560px){.service-area-map{height:400px}.service-map-caption{gap:10px;padding:13px 14px;font-size:10px}.home-area-heading{display:block}.home-area-heading .button{margin-top:18px}.home-area-heading .section-head h2{font-size:34px}.service-card{padding-bottom:20px;min-height:332px}.service-card .service-art{height:140px}.instagram-reel-graphic{height:240px}.reel-rug-shape{width:205px;height:136px}.area-schedule{font-size:9px}}
+
+/* Photographic service imagery and playable media */
+.home-art.home-photo-art{overflow:visible;min-height:510px}
+.home-photo-frame{position:absolute;inset:18px 0 38px 10px;overflow:hidden;border-radius:180px 180px 18px 18px;box-shadow:0 24px 65px rgba(56,19,50,.15)}
+.home-photo-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(15,26,30,.45))}
+.home-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:48% center}
+.home-photo-art .wash-stage-label{z-index:2;color:#fff;top:48px;left:35px}
+.home-photo-art .wash-stage-label span{background:rgba(255,255,255,.9);color:var(--ink)}
+.home-photo-art .wash-price-float{z-index:3;right:-12px;bottom:8px;background:#fff}
+.service-art.service-photo{height:210px;background:#e8e8e8}
+.service-photo:before,.service-photo:after{display:none}
+.service-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.service-card:hover .service-photo img{transform:scale(1.055)}
+.service-card{min-height:405px}
+.service-photo .service-art-label{background:rgba(255,255,255,.94)}
+.service-hero-photo{margin:0 0 18px;overflow:hidden;border-radius:12px;background:#ece8e9}
+.service-hero-photo img{display:block;width:100%;height:260px;object-fit:cover}
+.service-hero-photo figcaption{font-size:11px;color:var(--muted);padding:10px 13px;background:#fff}
+.stage-art.stage-photo{width:100%;height:110px;overflow:hidden;border-radius:6px;padding:0;background:#e9e9e9}
+.stage-photo img{width:100%;height:100%;object-fit:cover}
+.media-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:32px}
+.media-heading h2{font-size:clamp(28px,4vw,44px);margin:14px 0}
+.media-heading p{color:var(--muted);max-width:600px;line-height:1.7}
+.media-heading .button{flex-shrink:0}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.video-card{background:white;border:1px solid var(--line);overflow:hidden;border-radius:10px;box-shadow:0 14px 40px rgba(56,19,50,.05)}
+.video-player{position:relative;aspect-ratio:16/9;background:#132128;overflow:hidden}
+.video-player video,.video-player iframe,.video-poster{display:block;width:100%;height:100%;border:0}
+.video-player video{object-fit:contain}
+.video-poster{position:relative;cursor:pointer;padding:0;background:#132128;color:white}
+.video-poster img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .25s,transform .4s}
+.video-poster:hover img{opacity:.65;transform:scale(1.03)}
+.media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:64px;height:64px;padding-left:4px;background:white;color:#381332;border-radius:50%;box-shadow:0 0 0 10px rgba(255,255,255,.15)}
+.video-poster-label{position:absolute;bottom:18px;left:0;right:0;font-size:13px;font-weight:700;text-shadow:0 2px 8px #000}
+.video-info{padding:24px}
+.video-info>span{font-size:10px;letter-spacing:.15em;font-weight:800;color:#a7387d}
+.video-info h3{font-size:21px;margin:10px 0}
+.video-info p{font-size:13px;line-height:1.7;color:var(--muted)}
+.video-info a{display:inline-block;font-size:12px;font-weight:700;margin-top:16px;text-decoration:underline;text-underline-offset:4px}
+.video-unavailable{height:100%;display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;color:white}
+.instagram-video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+.instagram-embed{border:0;width:100%;height:560px;background:white}
+@media(max-width:850px){.media-heading{align-items:flex-start;flex-direction:column}.video-grid{gap:18px}.instagram-video-grid{grid-template-columns:1fr 1fr}.home-art.home-photo-art{min-height:440px}.home-photo-art .wash-price-float{right:0}}
+@media(max-width:560px){.home-art.home-photo-art{min-height:400px;margin-top:25px}.home-photo-frame{inset:0 0 28px;border-radius:120px 120px 14px 14px}.home-photo-art .wash-stage-label{top:28px;left:20px}.home-photo-art .wash-price-float{bottom:0;right:8px;width:205px}.video-grid,.instagram-video-grid{grid-template-columns:1fr}.video-info{padding:20px}.service-art.service-photo{height:190px}.service-hero-photo img{height:230px}.stage-art.stage-photo{height:100px}}
