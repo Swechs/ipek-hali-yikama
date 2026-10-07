@@ -165,3 +165,16 @@ html[data-motion="paused"] .motion-reveal,html[data-motion="paused"] .motion-rev
 @media(max-width:560px){.ipek-mobile-menu{height:calc(100dvh - 72px);max-height:calc(100dvh - 72px)}}
 
 @media(max-width:560px){.carpet-stage:last-child .stage-art.stage-photo{height:auto;aspect-ratio:3/2}.carpet-stage:last-child .stage-photo img{display:block;width:100%;height:100%;object-fit:contain}}
+
+/* Preserve each process photograph's natural framing on mobile. */
+@media(max-width:850px){
+.carpet-stage .stage-art.stage-photo,
+.carpet-stage:hover .stage-art.stage-photo,
+.carpet-stage:last-child .stage-art.stage-photo{
+display:block!important;height:auto!important;min-height:0;aspect-ratio:auto!important;transform:none!important
+}
+.carpet-stage .stage-art.stage-photo img,
+.carpet-stage:last-child .stage-art.stage-photo img{
+position:static!important;display:block!important;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;transform:none!important
+}
+}
