@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 export const photos = {
   factory: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/1-carpet-washing-machines-4.jpg',
-  carpet: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/how-to-clean-wool-rug-crystal-carpet-cleaners-e1731668052596.jpg',
-  sofa: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2025/04/yerinde-koltuk-yikama-hizmeti.5.jpg.webp',
-  curtain: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/12/01413e-perde.jpg',
-  bedding: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2025/04/yorganyikama1.jpg',
+  carpet: '/images/ipek-hali.jpg',
+  sofa: '/images/ipek-koltuk.jpg',
+  curtain: '/images/ipek-perde.jpg',
+  bedding: '/images/ipek-yorgan.jpg',
 }
 export function servicePhoto(title: string) {
   return title.toLocaleLowerCase('tr-TR').includes('koltuk') ? photos.sofa : title.toLocaleLowerCase('tr-TR').includes('perde') ? photos.curtain : /yorgan|battaniye/i.test(title) ? photos.bedding : photos.carpet
