@@ -41,11 +41,11 @@ export function VideoGallery() {
         <article className="video-card"><div className="video-player">{videoError ? <div className="video-unavailable"><p>Video şu anda yüklenemiyor.</p><a className="button button-white" href={newsUrl} target="_blank" rel="noreferrer">Kaynağında izle ↗</a></div> :
           <video controls playsInline preload="none" poster="https://demokrat32com.teimg.com/crop/1280x720/demokrat32-com/uploads/2026/06/ipk-1.jpg" onError={() => setVideoError(true)} aria-label="İpek Halı Yıkama: halının yıkama aşamaları"><source src={processVideo} type="video/mp4"/>Tarayıcınız video oynatmayı desteklemiyor. <a href={newsUrl}>Videoyu izleyin</a></video>}</div>
           <div className="video-info"><span>YIKAMA SÜRECİ</span><h3>Festival halısının temizlik yolculuğu</h3><p>Yıkama aşamalarını ses, duraklatma ve tam ekran kontrolleriyle izleyin.</p><a href={newsUrl} target="_blank" rel="noreferrer">Kaynak: Demokrat Gazetesi ↗</a></div></article>
+        <DirectReel/>
+        <AdditionalVideo/>
         <article className="video-card"><div className="video-player">{youtubeOpen ? <iframe src="https://www.youtube-nocookie.com/embed/DOM463SSu3A?autoplay=1&rel=0" title="Isparta İpek Halı ve Koltuk Yıkama tanıtım filmi" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin"/> :
           <button type="button" className="video-poster" onClick={() => setYoutubeOpen(true)} aria-label="İpek tanıtım filmini oynat"><img src="https://i.ytimg.com/vi/DOM463SSu3A/hqdefault.jpg" alt="İpek Halı Yıkama tanıtım filminden bir kare" loading="lazy"/><span className="media-play" aria-hidden="true">▶</span><span className="video-poster-label">Tanıtım filmini oynat</span></button>}</div>
           <div className="video-info"><span>İPEK TANITIM FİLMİ</span><h3>Halıdan koltuğa, İpek’i yakından tanıyın</h3><p>Tesis, hizmetler ve halıların bakım yolculuğu.</p><a href="https://www.youtube.com/watch?v=DOM463SSu3A" target="_blank" rel="noreferrer">YouTube’da izle ↗</a></div></article>
-        <AdditionalVideo/>
-        <DirectReel/>
       </div>
       <div style={{display:'flex',gap:16,flexWrap:'wrap',marginTop:24}}>{instagramReels.filter(reel => reel.shortcode !== 'DcMK_MWtZev').map(reel => <a className="button button-quiet" key={reel.shortcode} href={'https://www.instagram.com/reel/' + reel.shortcode + '/'} target="_blank" rel="noreferrer">{reel.title} · Instagram ↗</a>)}</div>
     </div>
