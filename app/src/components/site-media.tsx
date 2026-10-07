@@ -11,7 +11,7 @@ export function servicePhoto(title: string) {
 }
 const processVideo = 'https://demokrat32com.tevideo.org/demokrat32-com/uploads/2026/06/binlerce-kisinin-uzerinde-yurudugu-o-halitum-yikama-asamalariyla-simdi-karsinizda-bu-videod.mp4'
 const newsUrl = 'https://www.demokrat32.com/binlerce-kisinin-uzerinde-yurudugu-hali-eski-haline-dondu-ipek-hali-yikamadan-dikkat-ceken-temizlik'
-export const instagramReels: { shortcode: string; title: string }[] = []
+export const instagramReels: { shortcode: string; title: string }[] = [{"shortcode":"DdlvicHkyGA","title":"İpek’ten görüntüler · 1"},{"shortcode":"DcMK_MWtZev","title":"İpek’ten görüntüler · 2"},{"shortcode":"DX15gyXEcdx","title":"İpek’ten görüntüler · 3"}]
 
 function AdditionalVideo() {
   const [open, setOpen] = useState(false)
