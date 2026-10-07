@@ -3,8 +3,7 @@ import { ContactBand, PageHero, SectionHead } from '../components/site-ui'
 import { ServiceAreaMap } from '../components/service-area-map'
 
 export const Route = createFileRoute('/hizmet-bolgeleri')({
-  head: () => ({
-    meta: [
+  head: () => ({links:[{rel:"canonical",href:"https://www.ispartaipekhaliyikama.com/hizmet-bolgeleri"}],meta:[{property:"og:url",content:"https://www.ispartaipekhaliyikama.com/hizmet-bolgeleri"},
       { title: 'Isparta Halı Yıkama Servis Bölgeleri | Atabey, Eğirdir — İpek' },
       { name: 'description', content: 'İpek Halı Yıkama servis bölgeleri: Isparta merkez, Atabey, Eğirdir, Gönen ve çevre köyler. Atabey ve Eğirdir güzergâhı Salı ve Cuma. Alım ve teslimat ücretsiz.' },
     ],

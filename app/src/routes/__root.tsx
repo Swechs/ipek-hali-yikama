@@ -27,7 +27,7 @@ function toOwnAssetUrl(v: string | null | undefined): string | null {
 function buildHead(m: AppMeta) {
   const t = m.og_title ?? "İpek Halı Yıkama — Isparta";
   const d = m.og_description ?? "Isparta İpek Halı Yıkama: Halı yıkama 130 TL/m², ücretsiz alım-teslimat. 0246 242 99 99";
-  const img = toOwnAssetUrl(m.og_image_url);
+  const img = m.og_image_url ? new URL(m.og_image_url, "https://www.ispartaipekhaliyikama.com").href : "https://www.ispartaipekhaliyikama.com/ipek-logo.png";
   const fav = toOwnAssetUrl(m.favicon_url);
   return {
     meta: [
@@ -36,15 +36,14 @@ function buildHead(m: AppMeta) {
       { title: t },
       { name: "description", content: d },
       { name: "theme-color", content: "#CC50AA" },
-      { name: "robots", content: "noindex, nofollow" },
+
       { property: "og:locale", content: "tr_TR" },
       { property: "og:title", content: t },
       { property: "og:description", content: d },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "İpek Halı Yıkama" },
       ...(img ? [{ property: "og:image:alt", content: "İpek Halı Yıkama için marka görseli" }] : []),
-      { property: "og:site_name", content: "İpek Halı Yıkama" },
-      ...(img ? [{ property: "og:image:alt", content: "İpek Halı Yıkama için halı dokusu ve marka görseli" }] : []),
+
       { name: "twitter:card", content: img ? "summary_large_image" : "summary" },
       ...(img ? [{ property: "og:image", content: img }, { name: "twitter:image", content: img }] : []),
     ],

@@ -17,14 +17,12 @@ const pages = [
 export const Route = createFileRoute('/sitemap.xml')({
   server: {
     handlers: {
-      GET: async ({ request }) => {
-        const origin = new URL(request.url).origin
-        const today = new Date().toISOString().split('T')[0]
+      GET: async () => {
+        const origin = "https://www.ispartaipekhaliyikama.com"
         const urls = pages
           .map(
             (p) => `  <url>
     <loc>${origin}${p.path}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>
   </url>`,

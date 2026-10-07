@@ -40,9 +40,18 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      if (url.hostname === "ispartaipekhaliyikama.com") {
+        url.protocol = "https:";
+        url.hostname = "www.ispartaipekhaliyikama.com";
+        return Response.redirect(url.href, 301);
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const result = await normalizeCatastrophicSsrResponse(response);
+      const headers = new Headers(result.headers);
+      headers.set("X-Robots-Tag", url.hostname === "www.ispartaipekhaliyikama.com" ? "index, follow" : "noindex, follow");
+      return new Response(result.body, {status: result.status, statusText: result.statusText, headers});
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
