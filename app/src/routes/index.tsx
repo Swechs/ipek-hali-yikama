@@ -8,7 +8,7 @@ const faqs:[string,string][]=[['Halı yıkama m² fiyatı ne kadar?','Halı yık
 function Home(){const [area,setArea]=useState('12');const sqm=Math.max(0,Number(area)||0);const price=sqm===0?0:sqm<=6?780:sqm*130;const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(([name,text])=>({'@type':'Question',name,acceptedAnswer:{'@type':'Answer',text}}))};const businessSchema={'@context':'https://schema.org','@type':'LocalBusiness','@id':'https://www.ispartaipekhaliyikama.com/#business',name:'İpek Halı Yıkama',url:'https://www.ispartaipekhaliyikama.com',telephone:'+90-246-242-99-99',image:'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/isparta-ipek-logo.png',areaServed:[{'@type':'City',name:'Isparta'},{'@type':'AdministrativeArea',name:'Atabey'},{'@type':'AdministrativeArea',name:'Eğirdir'},{'@type':'AdministrativeArea',name:'Gönen'},...['Büyük Gökçeli','Küçük Gökçeli','Büyük Hacılar','Küçük Hacılar','Ali Köyü','Harmanören','Kuleönü','İslamköy'].map(name=>({'@type':'Place',name}))],hasOfferCatalog:{'@type':'OfferCatalog',name:'Yıkama hizmetleri',itemListElement:[{'@type':'Offer',itemOffered:{'@type':'Service',name:'Halı yıkama'},priceSpecification:{'@type':'UnitPriceSpecification',price:'130',priceCurrency:'TRY',unitText:'m²'}},{'@type':'Offer',itemOffered:{'@type':'Service',name:'Koltuk takımı yıkama'},price:'2500',priceCurrency:'TRY'}]}};return <>
 <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(businessSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
 <section className="ipek-home-hero"><div className="ipek-home-hero-inner"><div className="ipek-home-copy"><span className="ipek-home-kicker"><i className="kicker-spark"/> Isparta’da halı yıkama</span><h1 className="ipek-home-title">Halıya özen,<br/><span>eve ferahlık.</span></h1><p className="ipek-home-lede">Halılarınızı ücretsiz alıp adresinize teslim ediyoruz. Fiyatı baştan görün; alım gününü bize sorun.</p><div className="ipek-home-actions"><a className="button button-primary" href={PHONE}>Ara · 0246 242 99 99</a><a className="button button-quiet" href={WA} target="_blank" rel="noreferrer">WhatsApp’tan yazın ↗</a></div><div className="hero-small-note"><i className="note-dot"/> Halı yıkama <b>130 TL / m²</b> · minimum ücret 780 TL</div></div><div className="home-art home-photo-art" aria-label="Halı yıkama sahnesi ve fiyat bilgisi">
-<div className="home-photo-frame"><img src={photos.factory} alt="Fırçaları ve taşıma bandıyla profesyonel halı yıkama makinesi" width="900" height="700" fetchPriority="high"/></div>
+<div className="home-photo-frame"><HeroWashAnimation/></div>
 
 <div className="wash-stage-label"><span>03</span><b>HALIYA<br/>ÖZEN</b></div><div className="wash-price-float"><span>HALI YIKAMA · ISPARTA</span><strong>130 <small>TL / m²</small></strong><p>Minimum ücret 780 TL</p><a href="/hali-yikama#hesaplayici">Fiyatı hesapla <i>↗</i></a></div></div></div></section>
 <div className="ipek-proofbar"><div className="ipek-proof-item"><strong>Ücretsiz servis</strong><span>Halı alım ve teslimatı</span></div><div className="ipek-proof-item"><strong>Net metrekare fiyatı</strong><span>130 TL / m² · minimum 780 TL</span></div><div className="ipek-proof-item"><strong>2–3 gün</strong><span>Yoğunluğa göre teslim süresi</span></div></div>
@@ -23,3 +23,30 @@ function Home(){const [area,setArea]=useState('12');const sqm=Math.max(0,Number(
 </>}
 function Service({href,no,title,price,text}:{href:string;no:string;title:string;price:string;text:string}){return <a className="service-card" href={href}><ServiceIllustration title={title}/><span className="service-index">{no} / İPEK</span><div><h3>{title}</h3><p>{text}</p></div><div className="service-bottom"><span>{price}</span><span>↗</span></div></a>}
 function ServiceIllustration({title}:{title:string}){return <div className="service-art service-photo"><img src={servicePhoto(title)} alt={title+' hizmetine ait tekstil ve bakım fotoğrafı'} loading="lazy" width="640" height="420"/><span className="service-art-label">{title.toLocaleUpperCase('tr-TR')}</span></div>}
+
+function HeroWashAnimation(){return <svg className="hero-wash-animation" viewBox="0 0 620 520" role="img" aria-label="Sıcak su püskürten makinede, dönen fırçalarla yıkanan ve bantta ilerleyen halı">
+<defs>
+<linearGradient id="hw-bg" x2="1" y2="1"><stop stopColor="#f4e8ef"/><stop offset="1" stopColor="#e3f0f1"/></linearGradient>
+<linearGradient id="hw-metal" x2="0" y2="1"><stop stopColor="#fdfdfd"/><stop offset=".5" stopColor="#b7c6ce"/><stop offset="1" stopColor="#708a98"/></linearGradient>
+<linearGradient id="hw-rug" x2="1"><stop stopColor="#8d3968"/><stop offset=".55" stopColor="#be5e92"/><stop offset="1" stopColor="#dc9bbb"/></linearGradient>
+<pattern id="hw-weave" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M40 9 70 40 40 71 10 40Z" fill="none" stroke="#f3d6e5" strokeWidth="2"/><path d="M40 25 55 40 40 55 25 40Z" fill="#f3d6e5" opacity=".45"/></pattern>
+<clipPath id="hw-belt"><path d="M170 210H450L536 492H84Z"/></clipPath>
+</defs>
+<rect width="620" height="520" fill="url(#hw-bg)"/>
+<path d="M0 100H620M0 160H620M0 220H620" stroke="#fff" strokeWidth="2" opacity=".55"/>
+<ellipse cx="310" cy="475" rx="255" ry="35" fill="#381332" opacity=".1"/>
+<path d="M140 200H480L580 510H40Z" fill="#344b58"/>
+<path d="M170 210H450L536 492H84Z" fill="url(#hw-rug)"/>
+<g clipPath="url(#hw-belt)"><g className="hero-rug-travel"><rect x="70" y="120" width="480" height="520" fill="url(#hw-weave)"/><path d="M178 130 96 510M442 130 524 510" stroke="#f3d6e5" strokeWidth="9" opacity=".7"/></g><path d="M150 225H470L530 480H90Z" fill="#fff" opacity=".07"/></g>
+<path d="M100 190V100Q100 75 130 75H490Q520 75 520 100V190" fill="none" stroke="#829aa6" strokeWidth="24"/>
+<rect x="80" y="88" width="460" height="83" rx="16" fill="url(#hw-metal)"/>
+<rect x="113" y="110" width="210" height="39" rx="7" fill="#381332"/>
+<text x="130" y="136" fill="#fff" fontSize="18" fontWeight="700" fontFamily="sans-serif">İPEK · SICAK SU</text>
+<rect x="449" y="110" width="56" height="39" rx="6" fill="#284b55"/><text x="459" y="136" fill="#d7fff4" fontFamily="monospace" fontSize="17">ON</text>
+{[180,245,310,375,440].map((x,i)=><g key={x}><rect x={x-9} y="167" width="18" height="21" rx="4" fill="#526e7d"/><path className="hero-water-stream" style={{animationDelay:(i*.12)+'s'}} d={'M'+x+' 190 l-15 88 M'+x+' 190 l15 88'} stroke="#53adb9" strokeWidth="4" fill="none" opacity=".7"/></g>)}
+<path d="M145 268H475" stroke="#516b7a" strokeWidth="12"/>
+{[220,310,400].map((x)=><g key={x}><g className="hero-brush-spin" style={{transformOrigin:x+'px 282px'}}>{Array.from({length:16},(_,i)=><path key={i} d={'M'+x+' 282v-43'} transform={'rotate('+(i*22.5)+' '+x+' 282)'} stroke={i%2?'#75959f':'#a9c8cc'} strokeWidth="9" strokeLinecap="round"/>)}</g><circle cx={x} cy="282" r="24" fill="url(#hw-metal)"/><circle cx={x} cy="282" r="8" fill="#381332"/></g>)}
+<g className="hero-foam-drift" fill="white" opacity=".86">{[155,195,240,280,325,370,410,458].map((x,i)=><ellipse key={x} cx={x} cy={326+(i%2)*9} rx="23" ry="8"/>)}</g>
+<path d="M90 425H530" stroke="#ffffff" strokeWidth="3" opacity=".45"/>
+<rect x="76" y="446" width="30" height="64" rx="9" fill="#8aa0aa"/><rect x="514" y="446" width="30" height="64" rx="9" fill="#8aa0aa"/>
+</svg>}
