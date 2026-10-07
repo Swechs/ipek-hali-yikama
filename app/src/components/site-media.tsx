@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 export const photos = {
   factory: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/1-carpet-washing-machines-4.jpg',
   carpet: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/how-to-clean-wool-rug-crystal-carpet-cleaners-e1731668052596.jpg',
@@ -21,6 +21,15 @@ function AdditionalVideo() {
     </div><div className="video-info"><span>BASINDA İPEK</span><h3>Kanal32’den İpek Halı Yıkama</h3><p>İpek Halı Yıkama hakkında Kanal32’de yayınlanan video.</p><a href="https://www.youtube.com/watch?v=3diAjIf7sEY" target="_blank" rel="noreferrer">Kaynak: Kanal32 · YouTube’da izle ↗</a></div></article>
 }
 
+
+function DirectReel() {
+  const [autoplay, setAutoplay] = useState(false)
+  useEffect(() => { setAutoplay(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) }, [])
+  return <article className="video-card"><div className="video-player">
+    <video controls playsInline muted autoPlay={autoplay} loop preload="metadata" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/6ca55eb6-ee59-4e15-94da-4fa25e8ea509.jpg" aria-label="İpek Halı Yıkama Instagram videosu"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/8c1a5631-e5a9-4880-9ece-17bcf20d3d20.mp4" type="video/mp4"/></video>
+    </div><div className="video-info"><span>İPEK’TEN GÖRÜNTÜLER</span><h3>İpek’i yakından tanıyın</h3><p>Videoyu burada izleyebilir, oynatıcıdan sesi açabilirsiniz.</p><a href="https://www.instagram.com/reel/DcMK_MWtZev/" target="_blank" rel="noreferrer">Instagram’daki paylaşım ↗</a></div></article>
+}
+
 export function VideoGallery() {
   const [youtubeOpen, setYoutubeOpen] = useState(false)
   const [videoError, setVideoError] = useState(false)
@@ -36,8 +45,9 @@ export function VideoGallery() {
           <button type="button" className="video-poster" onClick={() => setYoutubeOpen(true)} aria-label="İpek tanıtım filmini oynat"><img src="https://i.ytimg.com/vi/DOM463SSu3A/hqdefault.jpg" alt="İpek Halı Yıkama tanıtım filminden bir kare" loading="lazy"/><span className="media-play" aria-hidden="true">▶</span><span className="video-poster-label">Tanıtım filmini oynat</span></button>}</div>
           <div className="video-info"><span>İPEK TANITIM FİLMİ</span><h3>Halıdan koltuğa, İpek’i yakından tanıyın</h3><p>Tesis, hizmetler ve halıların bakım yolculuğu.</p><a href="https://www.youtube.com/watch?v=DOM463SSu3A" target="_blank" rel="noreferrer">YouTube’da izle ↗</a></div></article>
         <AdditionalVideo/>
+        <DirectReel/>
       </div>
-      {instagramReels.length > 0 && <div className="instagram-video-grid">{instagramReels.map(reel => <article className="video-card" key={reel.shortcode}><iframe className="instagram-embed" src={'https://www.instagram.com/reel/' + encodeURIComponent(reel.shortcode) + '/embed/'} title={reel.title} loading="lazy" allow="autoplay; encrypted-media; fullscreen" allowFullScreen/><div className="video-info"><h3>{reel.title}</h3><a href={'https://www.instagram.com/reel/' + reel.shortcode + '/'} target="_blank" rel="noreferrer">Instagram’da izle ↗</a></div></article>)}</div>}
+      <div style={{display:'flex',gap:16,flexWrap:'wrap',marginTop:24}}>{instagramReels.filter(reel => reel.shortcode !== 'DcMK_MWtZev').map(reel => <a className="button button-quiet" key={reel.shortcode} href={'https://www.instagram.com/reel/' + reel.shortcode + '/'} target="_blank" rel="noreferrer">{reel.title} · Instagram ↗</a>)}</div>
     </div>
   </section>
 }
