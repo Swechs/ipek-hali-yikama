@@ -132,3 +132,15 @@ html[data-motion="paused"] .motion-reveal,html[data-motion="paused"] .motion-rev
 .instagram-embed{border:0;width:100%;height:560px;background:white}
 @media(max-width:850px){.media-heading{align-items:flex-start;flex-direction:column}.video-grid{gap:18px}.instagram-video-grid{grid-template-columns:1fr 1fr}.home-art.home-photo-art{min-height:440px}.home-photo-art .wash-price-float{right:0}}
 @media(max-width:560px){.home-art.home-photo-art{min-height:400px;margin-top:25px}.home-photo-frame{inset:0 0 28px;border-radius:120px 120px 14px 14px}.home-photo-art .wash-stage-label{top:28px;left:20px}.home-photo-art .wash-price-float{bottom:0;right:8px;width:205px}.video-grid,.instagram-video-grid{grid-template-columns:1fr}.video-info{padding:20px}.service-art.service-photo{height:190px}.service-hero-photo img{height:230px}.stage-art.stage-photo{height:100px}}
+
+/* Animated carpet washing in the home hero. */
+.hero-wash-animation{display:block;width:100%;height:100%;object-fit:cover}
+.hero-rug-travel{animation:hero-rug-feed 3s linear infinite}
+.hero-water-stream{stroke-dasharray:12 10;animation:hero-water-fall .7s linear infinite}
+.hero-brush-spin{transform-box:view-box;animation:hero-brush-turn 1.8s linear infinite}
+.hero-foam-drift{animation:hero-foam-sway 1.6s ease-in-out infinite alternate}
+@keyframes hero-rug-feed{to{transform:translateY(80px)}}
+@keyframes hero-water-fall{to{stroke-dashoffset:-44}}
+@keyframes hero-brush-turn{to{transform:rotate(360deg)}}
+@keyframes hero-foam-sway{to{transform:translate(4px,7px);opacity:.55}}
+@media(prefers-reduced-motion:reduce){.hero-rug-travel,.hero-water-stream,.hero-brush-spin,.hero-foam-drift{animation:none}}
