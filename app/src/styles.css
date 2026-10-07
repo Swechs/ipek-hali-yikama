@@ -89,6 +89,14 @@ html[data-motion="paused"] .motion-reveal,html[data-motion="paused"] .motion-rev
 .home-photo-art .wash-stage-label{z-index:2;color:#fff;top:48px;left:35px}
 .home-photo-art .wash-stage-label span{background:rgba(255,255,255,.9);color:var(--ink)}
 .home-photo-art .wash-price-float{z-index:3;right:-12px;bottom:8px;background:#fff}
+.home-photo-art .wash-price-float{color:#381332;border-color:#e7dce4}
+.home-photo-art .wash-price-float>span{color:#8b285f}
+.home-photo-art .wash-price-float strong{color:#381332}
+.home-photo-art .wash-price-float small{color:#135965}
+.home-photo-art .wash-price-float p{color:#594b56}
+.home-photo-art .wash-price-float a{color:#381332;border-top-color:#e7dce4}
+.home-photo-art .wash-price-float a i{color:#135965}
+
 .service-art.service-photo{height:210px;background:#e8e8e8}
 .service-photo:before,.service-photo:after{display:none}
 .service-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
