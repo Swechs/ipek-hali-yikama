@@ -144,3 +144,14 @@ html[data-motion="paused"] .motion-reveal,html[data-motion="paused"] .motion-rev
 @keyframes hero-brush-turn{to{transform:rotate(360deg)}}
 @keyframes hero-foam-sway{to{transform:translate(4px,7px);opacity:.55}}
 @media(prefers-reduced-motion:reduce){.hero-rug-travel,.hero-water-stream,.hero-brush-spin,.hero-foam-drift{animation:none}}
+
+/* Keep process photos readable and upright on phones. */
+@media(max-width:560px){
+.carpet-stages{grid-template-columns:minmax(0,1fr);gap:28px;margin-top:24px}
+.carpet-stage,.carpet-stage:last-child{grid-column:auto;padding:0;min-width:0}
+.carpet-stage .stage-art.stage-photo,.carpet-stage:hover .stage-art.stage-photo{height:240px;transform:none;box-shadow:none;border-radius:10px;background:#e9e4e8}
+.carpet-stage .stage-photo img{object-fit:contain;object-position:center}
+.carpet-stage .stage-number{top:10px;left:10px;display:grid;place-items:center;width:30px;height:30px;background:white;border-radius:50%;color:#8b285f;font-size:11px;box-shadow:0 2px 8px #38133214}
+.carpet-stage h3{max-width:none;font-size:19px;margin-top:14px;margin-bottom:8px}
+.carpet-stage p{max-width:none;font-size:14px;line-height:1.6}
+}
