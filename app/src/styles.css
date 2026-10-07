@@ -185,3 +185,11 @@ position:static!important;display:block!important;width:100%!important;height:au
 @media(max-width:850px){.carpet-stage .process-photo{height:auto;overflow:visible}.carpet-stage .process-photo img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:10px}.carpet-stage:hover{transform:none}}
 
 @media(max-width:850px){.carpet-stage:nth-child(2) .process-photo{aspect-ratio:1500/703;overflow:hidden;background:#eee8ed}.carpet-stage:nth-child(2) .process-photo img{width:100%;height:100%;object-fit:contain}}
+
+/* Uniform process photos across mobile cards. */
+@media(max-width:850px){
+.carpet-stage .process-photo,.carpet-stage:nth-child(2) .process-photo{position:relative;height:auto;aspect-ratio:3/2;overflow:hidden;background:#eee8ed}
+.carpet-stage .process-photo img,.carpet-stage:nth-child(2) .process-photo img{position:absolute;inset:0;display:block;width:100%;height:100%;max-height:none;object-fit:cover;object-position:center;border-radius:10px}
+.carpet-stage:nth-child(2) .process-photo img{object-position:center 70%}
+.carpet-stage:nth-child(4) .process-photo img{object-position:center 65%}
+}
