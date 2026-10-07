@@ -2,11 +2,15 @@ import { createFileRoute } from '@tanstack/react-router'
 
 const pages = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/hali-yikama', priority: '0.9', changefreq: 'weekly' },
+  { path: '/hali-yikama', priority: '0.9', changefreq: 'monthly' },
   { path: '/koltuk-yikama', priority: '0.8', changefreq: 'monthly' },
   { path: '/perde-yikama', priority: '0.8', changefreq: 'monthly' },
-  { path: '/hizmet-bolgeleri', priority: '0.7', changefreq: 'monthly' },
-  { path: '/iletisim', priority: '0.7', changefreq: 'monthly' },
+  { path: '/yorgan-battaniye-yikama', priority: '0.8', changefreq: 'monthly' },
+  { path: '/hizmet-bolgeleri', priority: '0.8', changefreq: 'monthly' },
+  { path: '/hakkimizda', priority: '0.6', changefreq: 'yearly' },
+  { path: '/nasil-yikanir', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog', priority: '0.7', changefreq: 'monthly' },
+  { path: '/iletisim', priority: '0.7', changefreq: 'yearly' },
   { path: '/sss', priority: '0.6', changefreq: 'monthly' },
 ]
 

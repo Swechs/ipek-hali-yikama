@@ -1,199 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
+import { ContactBand, CarpetStages, FaqRows, PHONE, WA, SectionHead } from '../components/site-ui'
+import { ServiceAreaMap } from '../components/service-area-map'
+export const Route=createFileRoute('/')({head:()=>({meta:[{title:'Isparta Halı Yıkama | İpek Halı Yıkama · Ücretsiz Servis'},{name:'description',content:'Isparta’da halı yıkama 130 TL/m², minimum ücret 780 TL. Ücretsiz halı alım ve teslimat; koltuk, perde ve yorgan yıkama. 0246 242 99 99.'},{property:'og:title',content:'İpek Halı Yıkama · Isparta'},{property:'og:description',content:'Fiyatı açık, servisi kolay. Halı, koltuk ve perde yıkama.'}]}),component:Home})
+const faqs:[string,string][]=[['Halı yıkama m² fiyatı ne kadar?','Halı yıkama ücreti 130 TL/m²’dir. 6 m² ve altındaki siparişlerde minimum ücret 780 TL olarak uygulanır.'],['Halı alım ve teslimat ücretsiz mi?','Evet. Hizmet bölgelerimizde halı alım ve teslimat servisi ücretsizdir.'],['Halılar ne zaman teslim edilir?','Genellikle 2 günde teslim edilir. Yoğun dönemlerde süre 2–3 güne çıkabilir.'],['Atabey ve Eğirdir’e hangi günler servis var?','Atabey, Eğirdir ve yakın köy güzergâhları Salı ve Cuma günleri planlanır. Adresinizi arayıp teyit edebilirsiniz.']]
+function Home(){const [area,setArea]=useState('12');const sqm=Math.max(0,Number(area)||0);const price=sqm===0?0:sqm<=6?780:sqm*130;const faqSchema={'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(([name,text])=>({'@type':'Question',name,acceptedAnswer:{'@type':'Answer',text}}))};const businessSchema={'@context':'https://schema.org','@type':'LocalBusiness','@id':'https://ispartaipekhaliyikama.com/#business',name:'İpek Halı Yıkama',url:'https://ispartaipekhaliyikama.com',telephone:'+90-246-242-99-99',image:'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/isparta-ipek-logo.png',areaServed:[{'@type':'City',name:'Isparta'},{'@type':'AdministrativeArea',name:'Atabey'},{'@type':'AdministrativeArea',name:'Eğirdir'},{'@type':'AdministrativeArea',name:'Gönen'},...['Büyük Gökçeli','Küçük Gökçeli','Büyük Hacılar','Küçük Hacılar','Ali Köyü','Harmanören','Kuleönü','İslamköy'].map(name=>({'@type':'Place',name}))],hasOfferCatalog:{'@type':'OfferCatalog',name:'Yıkama hizmetleri',itemListElement:[{'@type':'Offer',itemOffered:{'@type':'Service',name:'Halı yıkama'},priceSpecification:{'@type':'UnitPriceSpecification',price:'130',priceCurrency:'TRY',unitText:'m²'}},{'@type':'Offer',itemOffered:{'@type':'Service',name:'Koltuk takımı yıkama'},price:'2500',priceCurrency:'TRY'}]}};return <>
+<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(businessSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>
+<section className="ipek-home-hero"><div className="ipek-home-hero-inner"><div className="ipek-home-copy"><span className="ipek-home-kicker"><i className="kicker-spark"/> Isparta’da halı yıkama</span><h1 className="ipek-home-title">Halıya özen,<br/><span>eve ferahlık.</span></h1><p className="ipek-home-lede">Halılarınızı ücretsiz alıp adresinize teslim ediyoruz. Fiyatı baştan görün; alım gününü bize sorun.</p><div className="ipek-home-actions"><a className="button button-primary" href={PHONE}>Ara · 0246 242 99 99</a><a className="button button-quiet" href={WA} target="_blank" rel="noreferrer">WhatsApp’tan yazın ↗</a></div><div className="hero-small-note"><i className="note-dot"/> Halı yıkama <b>130 TL / m²</b> · minimum ücret 780 TL</div></div><div className="home-art" aria-label="Halı yıkama sahnesi ve fiyat bilgisi">
+<svg className="carpet-wash-scene" aria-hidden="true" viewBox="0 0 600 500" fill="none"><defs><linearGradient id="washRug" x1="175" y1="160" x2="477" y2="358"><stop stopColor="#D967AE"/><stop offset="1" stopColor="#60234E"/></linearGradient><linearGradient id="washSteel" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#E1F7FA"/><stop offset="1" stopColor="#65C4D1"/></linearGradient><pattern id="washWeave" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 2h12M2 0v12" stroke="#F9D8E9" strokeOpacity=".52" strokeWidth="1.2"/><path d="M0 8h12M8 0v12" stroke="#19AEC1" strokeOpacity=".55" strokeWidth="1"/></pattern></defs><ellipse cx="311" cy="407" rx="240" ry="28" fill="#381332" fillOpacity=".1"/><path d="m75 340 363-57 100 49-372 65z" fill="#381332" fillOpacity=".13"/><path d="m92 321 350-55 82 36-359 59z" fill="url(#washSteel)" stroke="#438B98" strokeWidth="2"/><path d="m122 309 306-49 50 23-312 51z" fill="#E8F5F5" stroke="#72AEB4" strokeWidth="2"/><path d="m146 279 252-94 112 126-275 98z" fill="url(#washRug)" stroke="#381332" strokeWidth="3"/><path d="m166 280 224-83 85 111-247 85z" fill="url(#washWeave)" opacity=".76"/><path d="m202 274 73-27 38 47-80 29z" stroke="#FFE9F4" strokeWidth="3"/><path d="m276 247 66-24 39 48-70 26z" stroke="#13B4C6" strokeWidth="3"/><path d="m238 323 78-29 38 48-81 29z" stroke="#FFE9F4" strokeWidth="3"/><path d="m327 289 68-26 33 43-72 26z" stroke="#13B4C6" strokeWidth="3"/><g className="wash-brush"><ellipse cx="333" cy="162" rx="81" ry="22" transform="rotate(-16 333 162)" fill="#F8F3F5" stroke="#381332" strokeWidth="3"/><path d="m264 150 138-40m-127 58 139-41m-127 58 139-41" stroke="#C94F9B" strokeWidth="5" strokeLinecap="round"/><path d="m257 127-27-43m42 43-12-54m29 50 7-51" stroke="#00A5C8" strokeWidth="5" strokeLinecap="round"/></g><path className="wash-water" d="M108 226c36-32 48 39 82 8s48 34 76 5 50 31 80 3 52 31 84 1" stroke="#00A5C8" strokeWidth="7" strokeLinecap="round"/><path className="wash-water wash-water-two" d="M135 249c21-17 30 22 49 5s30 17 49 4 30 19 49 5" stroke="#B8F2F6" strokeWidth="4" strokeLinecap="round"/><g className="wash-foam" fill="#fff" fillOpacity=".95"><circle cx="159" cy="205" r="10"/><circle cx="178" cy="198" r="6"/><circle cx="201" cy="215" r="8"/><circle cx="440" cy="221" r="9"/><circle cx="459" cy="213" r="5"/><circle cx="471" cy="229" r="7"/></g><g className="wash-sparkles" stroke="#00A5C8" strokeWidth="3" strokeLinecap="round"><path d="M500 113v19m-9-10h18M112 158v14m-7-7h14M494 294v13m-7-7h14"/></g><path d="M118 381v26m394-79v27" stroke="#381332" strokeWidth="5" strokeLinecap="round"/><circle className="wash-bubble" cx="109" cy="188" r="7" fill="#91e5ed"/><circle className="wash-bubble wash-bubble-two" cx="460" cy="171" r="5" fill="#f7c9e3"/></svg>
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "İpek Halı Yıkama — Isparta | Halı Yıkama 130 TL/m²" },
-      { name: "description", content: "Isparta İpek Halı Yıkama: Halı yıkama 130 TL/m², minimum 780 TL, ücretsiz alım-teslimat, 2–3 günde teslim. Koltuk yıkama 2.500 TL. 0246 242 99 99" },
-    ],
-  }),
-  component: HomePage,
-});
-
-function HomePage() {
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://ispartaipekhaliyikama.com/#business",
-        name: "İpek Halı Yıkama", description: "Isparta'da profesyonel halı, koltuk ve perde yıkama. Ücretsiz alım-teslimat.",
-        url: "https://ispartaipekhaliyikama.com", telephone: "+90-246-242-99-99",
-        areaServed: [{ "@type": "City", name: "Isparta" }, { "@type": "AdministrativeArea", name: "Atabey" }, { "@type": "AdministrativeArea", name: "Eğirdir" }],
-        hasOfferCatalog: { "@type": "OfferCatalog", name: "Yıkama Hizmetleri", itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Halı Yıkama" }, priceSpecification: { "@type": "UnitPriceSpecification", price: "130", priceCurrency: "TRY", unitText: "m²" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Koltuk Takımı Yıkama" }, price: "2500", priceCurrency: "TRY" },
-        ]},
-      }) }} />
-
-      {/* ═══ HERO ═══ */}
-      <section className="ipek-hero">
-        <div className="ipek-hero-content">
-          <div className="ipek-badge" style={{ background: "rgba(93,212,168,0.15)", color: "var(--g3)", marginBottom: "1.25rem", border: "1px solid rgba(93,212,168,0.2)" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Isparta ve Çevresinde Hizmet
-          </div>
-
-          <h1>
-            Halılarınız Bizimle<br />
-            <span>Tertemiz Olsun</span>
-          </h1>
-
-          <p className="ipek-hero-sub">
-            Profesyonel halı yıkama hizmeti. Halınızı kapınızdan alıyor, tertemiz ve hijyenik şekilde teslim ediyoruz. <strong style={{ color: "#fff" }}>Ücretsiz alım ve teslimat.</strong>
-          </p>
-
-          <div className="ipek-hero-prices">
-            <div className="ipek-hero-price-card">
-              <div className="label">Halı Yıkama</div>
-              <div className="value">130 TL<span style={{ fontSize: "0.75rem", fontWeight: 400, opacity: 0.7 }}>/m²</span></div>
-              <div className="sub">Minimum 780 TL</div>
-            </div>
-            <div className="ipek-hero-price-card">
-              <div className="label">Koltuk Takımı</div>
-              <div className="value">2.500 TL</div>
-              <div className="sub">Takım fiyatı</div>
-            </div>
-            <div className="ipek-hero-price-card">
-              <div className="label">Teslimat</div>
-              <div className="value">2–3 Gün</div>
-              <div className="sub">Ücretsiz servis</div>
-            </div>
-          </div>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-            <a href="tel:02462429999" className="ipek-btn ipek-btn-white">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Hemen Ara
-            </a>
-            <a href="https://wa.me/902462429999?text=Merhaba%2C%20hal%C4%B1%20y%C4%B1kama%20i%C3%A7in%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" className="ipek-btn ipek-btn-wa">
-              WhatsApp ile Yazın
-            </a>
-            <a href="/hali-yikama#hesaplayici" className="ipek-btn" style={{ background: "rgba(255,255,255,0.1)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)" }}>
-              Fiyat Hesapla
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SERVICES ═══ */}
-      <section className="ipek-section" style={{ background: "#fff" }}>
-        <div className="ipek-container">
-          <h2 className="ipek-section-title">Hizmetlerimiz</h2>
-          <p className="ipek-section-desc">Isparta ve çevresinde halı, koltuk ve perde yıkama hizmeti veriyoruz.</p>
-          <div className="ipek-services-grid">
-            <ServiceCard icon={<CarpetIcon />} title="Halı Yıkama" desc="Tüm halı türlerinde profesyonel yıkama. 130 TL/m², minimum 780 TL. Ücretsiz alım-teslimat. 2–3 günde tertemiz kapınızda." price="130 TL/m²" href="/hali-yikama" />
-            <ServiceCard icon={<CouchIcon />} title="Koltuk Yıkama" desc="Koltuk takımınızı derinlemesine temizliyoruz. Lekeler, kir ve alerjenlerden arındırılmış konforlu bir yaşam alanı." price="2.500 TL" href="/koltuk-yikama" />
-            <ServiceCard icon={<CurtainIcon />} title="Perde Yıkama" desc="Tül, stor ve kumaş perdelerinizi özenle yıkıyoruz. Fiyat bilgisi için bize ulaşın, size özel teklif verelim." price="Teklif Alın" href="/perde-yikama" />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ HOW IT WORKS ═══ */}
-      <section className="ipek-section" style={{ background: "var(--c0)" }}>
-        <div className="ipek-container">
-          <h2 className="ipek-section-title">Nasıl Çalışır?</h2>
-          <p className="ipek-section-desc">4 kolay adımda halılarınız tertemiz.</p>
-          <div className="ipek-steps">
-            <Step n="1" title="Arayın veya Yazın" desc="Bizi arayın veya WhatsApp'tan yazın. Halınızın m² bilgisini ve adresinizi iletin." />
-            <Step n="2" title="Halınızı Alalım" desc="Belirlenen gün ve saatte halınızı kapınızdan ücretsiz olarak alıyoruz." />
-            <Step n="3" title="Profesyonel Yıkama" desc="Halınız özel makinelerle derinlemesine yıkanır, hijyenik ortamda kurutulur." />
-            <Step n="4" title="Teslim Edelim" desc="2–3 gün içinde tertemiz olarak kapınıza ücretsiz teslim edilir." />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SERVICE AREAS ═══ */}
-      <section className="ipek-section" style={{ background: "#fff" }}>
-        <div className="ipek-container" style={{ textAlign: "center" }}>
-          <h2 className="ipek-section-title">Hizmet Bölgelerimiz</h2>
-          <p className="ipek-section-desc">Isparta merkez ve çevre yerleşimlere halı alım-teslimat servisi sunuyoruz.</p>
-          <div className="ipek-area-tags" style={{ marginBottom: "1.5rem" }}>
-            <span className="ipek-area-tag ipek-area-tag-accent">Isparta Merkez</span>
-            <span className="ipek-area-tag ipek-area-tag-accent">Atabey — Salı / Cuma</span>
-            <span className="ipek-area-tag ipek-area-tag-accent">Eğirdir — Salı / Cuma</span>
-            {["Büyük Gökçeli", "Küçük Gökçeli", "Büyük Hacılar", "Küçük Hacılar", "Ali Köyü", "Harmanören", "Kuleönü", "İslamköy"].map(a => <span key={a} className="ipek-area-tag">{a}</span>)}
-          </div>
-          <a href="/hizmet-bolgeleri" style={{ color: "var(--g7)", fontWeight: 600, fontSize: "0.9375rem" }}>Tüm bölgeleri gör &rarr;</a>
-        </div>
-      </section>
-
-      {/* ═══ FAQ ═══ */}
-      <section className="ipek-section" style={{ background: "var(--c0)" }}>
-        <div style={{ maxWidth: "720px", margin: "0 auto", padding: "0 1.25rem" }}>
-          <h2 className="ipek-section-title">Sık Sorulan Sorular</h2>
-          <p className="ipek-section-desc">En çok merak edilen sorular ve yanıtları.</p>
-          <Faq q="Halı yıkama m² fiyatı ne kadar?" a="Halı yıkama ücretimiz 130 TL/m²'dir. 6 m²'den küçük halılarda minimum ücret 780 TL'dir." />
-          <Faq q="Halı alım ve teslimat ücretsiz mi?" a="Evet, Isparta merkez ve belirtilen hizmet bölgelerinde halı alım ve teslimat servisi tamamen ücretsizdir." />
-          <Faq q="Halım kaç günde teslim edilir?" a="Normal koşullarda yaklaşık 2 günde, yoğun dönemlerde 2–3 günde teslim edilir." />
-          <Faq q="Koltuk yıkama fiyatı ne kadar?" a="Koltuk takımı yıkama ücretimiz 2.500 TL'dir." />
-          <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-            <a href="/sss" style={{ color: "var(--g7)", fontWeight: 600 }}>Tüm soruları gör &rarr;</a>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ CTA BANNER ═══ */}
-      <section className="ipek-cta-banner ipek-section" style={{ textAlign: "center", color: "#fff", padding: "4rem 1.25rem" }}>
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <h2 style={{ color: "#fff", fontSize: "clamp(1.5rem, 3vw, 2rem)", marginBottom: "0.75rem" }}>Halılarınız İçin Hemen Randevu Alın</h2>
-          <p style={{ opacity: 0.8, marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>Bizi arayın veya WhatsApp'tan yazın, halınızı kapınızdan alalım.</p>
-          <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap" }}>
-            <a href="tel:02462429999" className="ipek-btn ipek-btn-white">0246 242 99 99</a>
-            <a href="https://wa.me/902462429999?text=Merhaba%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" className="ipek-btn ipek-btn-wa">WhatsApp ile Yazın</a>
-          </div>
-        </div>
-      </section>
-
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Halı yıkama m² fiyatı ne kadar?", acceptedAnswer: { "@type": "Answer", text: "130 TL/m². Minimum 780 TL." } },
-          { "@type": "Question", name: "Halı alım ve teslimat ücretsiz mi?", acceptedAnswer: { "@type": "Answer", text: "Evet, ücretsizdir." } },
-          { "@type": "Question", name: "Halım kaç günde teslim edilir?", acceptedAnswer: { "@type": "Answer", text: "2–3 günde teslim edilir." } },
-          { "@type": "Question", name: "Koltuk yıkama fiyatı ne kadar?", acceptedAnswer: { "@type": "Answer", text: "Koltuk takımı 2.500 TL." } },
-        ],
-      }) }} />
-    </>
-  );
-}
-
-/* ─── Components ─── */
-function ServiceCard({ icon, title, desc, price, href }: { icon: React.ReactNode; title: string; desc: string; price: string; href: string }) {
-  return (
-    <a href={href} className="ipek-card ipek-service-card" style={{ textDecoration: "none" }}>
-      <div className="ipek-service-icon">{icon}</div>
-      <h3 style={{ fontSize: "1.25rem", marginBottom: "0.5rem" }}>{title}</h3>
-      <p style={{ fontSize: "0.9375rem", color: "var(--t5)", lineHeight: 1.7, marginBottom: "1rem" }}>{desc}</p>
-      <span className="ipek-badge" style={{ background: "var(--g1)", color: "var(--g7)" }}>{price}</span>
-    </a>
-  );
-}
-
-function Step({ n, title, desc }: { n: string; title: string; desc: string }) {
-  return (
-    <div className="ipek-step">
-      <div className="ipek-step-num">{n}</div>
-      <h3>{title}</h3>
-      <p>{desc}</p>
-    </div>
-  );
-}
-
-function Faq({ q, a }: { q: string; a: string }) {
-  return (
-    <details className="ipek-card ipek-faq">
-      <summary>{q}</summary>
-      <p className="ipek-faq-answer">{a}</p>
-    </details>
-  );
-}
-
-/* ─── Icons ─── */
-function CarpetIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/><line x1="2" y1="12" x2="22" y2="12"/></svg>;
-}
-function CouchIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/><path d="M4 18v2"/><path d="M20 18v2"/></svg>;
-}
-function CurtainIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--g7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 2h20v4H2z"/><path d="M4 6c0 4 2 8 8 12"/><path d="M20 6c0 4-2 8-8 12"/><line x1="12" y1="18" x2="12" y2="22"/></svg>;
-}
+<div className="wash-stage-label"><span>03</span><b>YIKAMA<br/>& DURULAMA</b></div><div className="wash-price-float"><span>HALI YIKAMA · ISPARTA</span><strong>130 <small>TL / m²</small></strong><p>Minimum ücret 780 TL</p><a href="/hali-yikama#hesaplayici">Fiyatı hesapla <i>↗</i></a></div></div></div></section>
+<div className="ipek-proofbar"><div className="ipek-proof-item"><strong>Ücretsiz servis</strong><span>Halı alım ve teslimatı</span></div><div className="ipek-proof-item"><strong>Net metrekare fiyatı</strong><span>130 TL / m² · minimum 780 TL</span></div><div className="ipek-proof-item"><strong>2–3 gün</strong><span>Yoğunluğa göre teslim süresi</span></div></div>
+<div className="textile-ticker" aria-hidden="true"><div className="ticker-track"><span>TOZUNU AL</span><i>✳</i><span>HALIYI YIKA · DURULA</span><i>✳</i><span>KURUT · KONTROL ET</span><i>✳</i><span>ADRESE TESLİM</span><i>✳</i><span>TOZUNU AL</span><i>✳</i><span>HALIYI YIKA · DURULA</span><i>✳</i><span>KURUT · KONTROL ET</span><i>✳</i><span>ADRESE TESLİM</span><i>✳</i></div></div>
+<section className="home-services"><div className="container"><SectionHead eyebrow="HİZMETLER" title="Evinizdeki tekstillere, ayrı ayrı özen." copy="Halı, koltuk, perde veya yorgan. İhtiyacınız olan hizmetin ayrıntılarına göz atın."/><div className="services-grid"><Service href="/hali-yikama" no="01" title="Halı yıkama" price="130 TL / m²" text="Ücretsiz kapıdan alım ve teslimat. Online hesaplayıcıyla yaklaşık ücreti görün."/><Service href="/koltuk-yikama" no="02" title="Koltuk yıkama" price="Takım 2.500 TL" text="Koltuk takımınız ve randevu planı için ayrıntıları öğrenin."/><Service href="/perde-yikama" no="03" title="Perde yıkama" price="Fiyat için bilgi alın" text="Perdenizin türünü ve ölçüsünü paylaşın; size güncel fiyatı bildirelim."/><Service href="/yorgan-battaniye-yikama" no="04" title="Yorgan & battaniye" price="Fiyat için bilgi alın" text="Yorgan ve battaniyeler için yıkama ve servis bilgisini sorun."/></div></div></section>
+<section className="home-process"><div className="container process-layout"><SectionHead eyebrow="HALI YIKAMA SÜRECİ" title="Halı, temizlenip kapınıza dönene kadar." copy="Her halının yolculuğu kontrolden başlar; yıkama, kurutma ve son kontrolün ardından teslimatla tamamlanır."/><CarpetStages/></div></section>
+<section className="home-area"><div className="container"><div className="home-area-heading"><SectionHead eyebrow="SERVİS ALANI" title="Isparta ve çevre güzergâhlar." copy="Atabey ve Eğirdir için Salı ve Cuma. Haritadaki diğer köy ve ilçe noktaları için adresinizi teyit edin."/><a className="button button-quiet" href="/hizmet-bolgeleri">Tüm servis bölgeleri ↗</a></div><ServiceAreaMap/></div></section>
+<section className="home-faq"><div className="container faq-layout"><SectionHead eyebrow="MERAK EDİLENLER" title="Önce aklınızdaki sorular." copy="Fiyat, servis veya teslimatla ilgili başka bir sorunuz varsa bize sorun."/><div><FaqRows items={faqs}/><a className="button button-quiet" href="/sss" style={{marginTop:22}}>Tüm sorular ↗</a></div></div></section>
+<section className="section"><div className="container"><div className="price-calculator"><div className="eyebrow"><span className="eyebrow-dot"/>HIZLI FİYAT TAHMİNİ</div><h2 style={{marginTop:13}}>Kaç m² halınız var?</h2><p style={{opacity:.75,marginTop:8}}>6 m² ve altı siparişlerde minimum 780 TL alınır.</p><div className="calculator-form"><label>Halı alanı (m²)<input type="number" min="1" step="0.5" value={area} onChange={e=>setArea(e.target.value)} aria-label="Halı alanı metrekare"/></label><a className="button button-white" href="/hali-yikama#hesaplayici">Detaylı hesapla ↗</a></div><div className="calc-result"><strong>{sqm===0?'—':`${new Intl.NumberFormat('tr-TR').format(price)} TL`}</strong><span>{sqm===0?'Tahmini tutarı görmek için metrekare girin':'yaklaşık yıkama ücreti · servis bölgesine göre teslimat ücretsiz'}</span></div></div></div></section>
+<section className="section section-paper ipek-instagram-section"><div className="container ipek-instagram-layout"><div><SectionHead eyebrow="İŞİMİZİN İÇİNDEN" title="Yıkama sürecini Instagram’da izleyin." copy="İpek Halı Yıkama’nın paylaşımlarından halı, koltuk ve perde yıkama videolarına ulaşın."/><a className="button button-primary" href="https://www.instagram.com/ispartaipekhaliyikamaofficial/" target="_blank" rel="noreferrer">Instagram Reels’lerini aç ↗</a></div><a className="instagram-feature" href="https://www.instagram.com/ispartaipekhaliyikamaofficial/" target="_blank" rel="noreferrer"><span className="instagram-feature-top"><span className="instagram-ring">İ</span><span><b>@ispartaipekhaliyikamaofficial</b><small>İpek Halı Yıkama · Isparta</small></span><span className="instagram-arrow">↗</span></span><span className="instagram-reel-graphic" aria-hidden="true"><span className="reel-rug-shape"><i/><i/><i/><b>İPEK</b></span><span className="reel-waterline"/><span className="reel-play">▶</span><span className="reel-spark reel-spark-one">✳</span><span className="reel-spark reel-spark-two">✳</span></span><span className="instagram-feature-bottom"><b>Halı yıkama videoları</b><span>Instagram hesabında izleyin <i>↗</i></span></span></a></div></section>
+<ContactBand title="Halılar için fiyat ve alım günü sorun." copy="Telefonla arayın veya WhatsApp’tan adresinizi gönderin; size uygun servis zamanını konuşalım."/>
+</>}
+function Service({href,no,title,price,text}:{href:string;no:string;title:string;price:string;text:string}){return <a className="service-card" href={href}><ServiceIllustration title={title}/><span className="service-index">{no} / İPEK</span><div><h3>{title}</h3><p>{text}</p></div><div className="service-bottom"><span>{price}</span><span>↗</span></div></a>}
+function ServiceIllustration({title}:{title:string}){return <div className={`service-art service-art-${title.startsWith('Halı')?'rug':title.startsWith('Koltuk')?'sofa':title.startsWith('Perde')?'curtain':'duvet'}`} aria-hidden="true"><svg viewBox="0 0 280 142" fill="none"><ellipse cx="140" cy="123" rx="94" ry="9" fill="#381332" fillOpacity=".1"/>{title.startsWith('Halı')?<><path d="m59 86 112-42 53 24-114 46z" fill="#D967AE" stroke="#502046" strokeWidth="2"/><path d="m78 84 91-34 37 17-93 34z" stroke="#F9DDED" strokeWidth="2"/><path d="m92 80 23-9 13 8-24 9zm45-16 23-9 13 8-24 9zm-23 33 23-9 13 8-24 9z" fill="#18AFC0"/><path d="M82 50c11-10 15 14 26 4s15 10 26 1" stroke="#19B4C4" strokeWidth="3" strokeLinecap="round"/><path d="M177 33c-5 9-2 13 4 13s8-5 4-13l-4-7z" fill="#9DE5EA"/><circle cx="202" cy="49" r="4" fill="#fff"/><circle cx="210" cy="57" r="3" fill="#fff"/></>:null}{title.startsWith('Koltuk')?<><path d="M73 72c0-11 8-19 19-19h12v31H82c-5 0-9-4-9-9v-3zm103-19h12c11 0 19 8 19 19v3c0 5-4 9-9 9h-22V53z" fill="#D967AE" stroke="#502046" strokeWidth="2"/><path d="M95 55h90c7 0 12 5 12 12v28H83V67c0-7 5-12 12-12z" fill="#E8A6D0" stroke="#502046" strokeWidth="2"/><path d="M85 76h108v28c0 5-4 9-9 9H94c-5 0-9-4-9-9V76z" fill="#B8468F" stroke="#502046" strokeWidth="2"/><path d="M101 83v17m37-17v17m37-17v17M93 114v8m86-8v8" stroke="#F7DCEC" strokeWidth="3" strokeLinecap="round"/><path d="M88 48c-3-6 4-9 1-15m17 17c-3-6 4-9 1-15" stroke="#17AABD" strokeWidth="2" strokeLinecap="round"/></>:null}{title.startsWith('Perde')?<><path d="M82 27h116v91H82z" fill="#E8F4F4" stroke="#5B9298" strokeWidth="2"/><path d="M91 35h45v79H91c13-19-10-52 0-79zm53 0h44c-11 21 9 48 0 79h-44c14-28-12-53 0-79z" fill="#D778B3" fillOpacity=".86" stroke="#A13F80" strokeWidth="2"/><path d="M99 39c9 14-6 42 0 67m9-67c8 15-5 40 1 67m49-67c8 17-6 42 0 67m10-67c8 15-5 41 1 67" stroke="#FFF4FA" strokeWidth="3"/><path d="M80 25h120" stroke="#502046" strokeWidth="4" strokeLinecap="round"/><circle cx="86" cy="25" r="3" fill="#17AABD"/><circle cx="194" cy="25" r="3" fill="#17AABD"/></>:null}{title.startsWith('Yorgan')?<><path d="m73 62 65-30 69 30v42c-22 4-44 4-66 0-22 4-45 4-68 0V62z" fill="#E9F1F2" stroke="#502046" strokeWidth="2"/><path d="m78 65 60-27 64 27v35c-22 5-42 5-64 0-20 5-40 5-60 0V65z" fill="#EFAFD5"/><path d="m79 67 59 27 64-27M138 39v61M79 85c19-4 39-4 59 0 21-4 42-4 64 0" stroke="#FDF3F9" strokeWidth="2"/><path d="M112 43c0-7 5-11 5-16m25 13c0-7 5-11 5-16m25 26c0-7 5-11 5-16" stroke="#17AABD" strokeWidth="2" strokeLinecap="round"/><circle cx="111" cy="29" r="2" fill="#17AABD"/><circle cx="144" cy="28" r="2" fill="#17AABD"/><circle cx="177" cy="38" r="2" fill="#17AABD"/></>:null}</svg><span className="service-art-label">{title.startsWith('Halı')?'FİBER · YIKAMA':title.startsWith('Koltuk')?'KUMAŞ · BAKIM':title.startsWith('Perde')?'TÜL · DOKU':'EV TEKSTİLİ'}</span></div>}
