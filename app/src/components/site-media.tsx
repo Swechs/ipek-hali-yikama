@@ -47,7 +47,7 @@ export function VideoGallery() {
           <button type="button" className="video-poster" onClick={() => setYoutubeOpen(true)} aria-label="İpek tanıtım filmini oynat"><img src="https://i.ytimg.com/vi/DOM463SSu3A/hqdefault.jpg" alt="İpek Halı Yıkama tanıtım filminden bir kare" loading="lazy"/><span className="media-play" aria-hidden="true">▶</span><span className="video-poster-label">Tanıtım filmini oynat</span></button>}</div>
           <div className="video-info"><span>İPEK TANITIM FİLMİ</span><h3>Halıdan koltuğa, İpek’i yakından tanıyın</h3><p>Tesis, hizmetler ve halıların bakım yolculuğu.</p><a href="https://www.youtube.com/watch?v=DOM463SSu3A" target="_blank" rel="noreferrer">YouTube’da izle ↗</a></div></article>
       </div>
-      <div style={{display:'flex',gap:16,flexWrap:'wrap',marginTop:24}}>{instagramReels.filter(reel => reel.shortcode !== 'DcMK_MWtZev').map(reel => <a className="button button-quiet" key={reel.shortcode} href={'https://www.instagram.com/reel/' + reel.shortcode + '/'} target="_blank" rel="noreferrer">{reel.title} · Instagram ↗</a>)}</div>
+
     </div>
   </section>
 }
