@@ -3,7 +3,7 @@ export const photos = {
   factory: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/1-carpet-washing-machines-4.jpg',
   carpet: '/images/ipek-hali.jpg',
   sofa: '/images/ipek-koltuk.jpg',
-  curtain: '/images/ipek-perde.jpg',
+  curtain: '/images/ipek-perde-fon.jpg',
   bedding: '/images/ipek-yorgan.jpg',
 }
 export function servicePhoto(title: string) {
