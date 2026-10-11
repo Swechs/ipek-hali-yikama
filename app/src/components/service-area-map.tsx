@@ -13,7 +13,6 @@ const points: ServicePoint[] = [
   { name: 'Isparta Merkez', lat: 37.7636722, lng: 30.5550569, kind: 'city', detail: 'Adres ve alım günü için arayıp teyit edin.' },
   { name: 'Atabey', lat: 37.9509348, lng: 30.6374073, kind: 'scheduled', detail: 'Servis günleri: Salı ve Cuma.' },
   { name: 'Eğirdir', lat: 37.8744344, lng: 30.8500433, kind: 'scheduled', detail: 'Servis günleri: Salı ve Cuma.' },
-  { name: 'Gönen', lat: 37.9575448, lng: 30.5128626, kind: 'route', detail: 'Adres ve servis günü için arayıp teyit edin.' },
   { name: 'Büyük Gökçeli', lat: 37.874832, lng: 30.733236, kind: 'village', detail: 'Çevre güzergâhı; adres teyidi gerekir.' },
   { name: 'Küçük Gökçeli', lat: 37.8682425, lng: 30.6968486, kind: 'village', detail: 'Çevre güzergâhı; adres teyidi gerekir.' },
   { name: 'Büyük Hacılar', lat: 37.7912954, lng: 30.6399947, kind: 'village', detail: 'Çevre güzergâhı; adres teyidi gerekir.' },

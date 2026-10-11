@@ -5,7 +5,7 @@ import { ServiceAreaMap } from '../components/service-area-map'
 export const Route = createFileRoute('/hizmet-bolgeleri')({
   head: () => ({links:[{rel:"canonical",href:"https://www.ispartaipekhaliyikama.com/hizmet-bolgeleri"}],meta:[{property:"og:url",content:"https://www.ispartaipekhaliyikama.com/hizmet-bolgeleri"},
       { title: 'Isparta Halı Yıkama Servis Bölgeleri | Atabey, Eğirdir — İpek' },
-      { name: 'description', content: 'İpek Halı Yıkama servis bölgeleri: Isparta merkez, Atabey, Eğirdir, Gönen ve çevre köyler. Atabey ve Eğirdir güzergâhı Salı ve Cuma. Alım ve teslimat ücretsiz.' },
+      { name: 'description', content: 'İpek Halı Yıkama servis bölgeleri: Isparta merkez, Atabey, Eğirdir ve çevre köyler. Atabey ve Eğirdir güzergâhı Salı ve Cuma. Alım ve teslimat ücretsiz.' },
     ],
   }),
   component: Page,
@@ -15,7 +15,6 @@ const zones = [
   ['Isparta Merkez', 'Adres ve alım gününü telefonla teyit edin.', 'Merkez'],
   ['Atabey', 'Servis günleri Salı ve Cuma.', 'Salı · Cuma'],
   ['Eğirdir', 'Servis günleri Salı ve Cuma.', 'Salı · Cuma'],
-  ['Gönen', 'Adres ve servis günü için telefonla teyit edin.', 'Güzergâha göre'],
   ['Büyük Gökçeli', 'Çevre güzergâhında servis; adresi önceden teyit edin.', 'Güzergâha göre'],
   ['Küçük Gökçeli', 'Çevre güzergâhında servis; adresi önceden teyit edin.', 'Güzergâha göre'],
   ['Büyük Hacılar', 'Çevre güzergâhında servis; adresi önceden teyit edin.', 'Güzergâha göre'],
@@ -37,7 +36,7 @@ function Page() {
     </section>
     <section className="section section-paper">
       <div className="container">
-        <SectionHead eyebrow="GÜZERGÂHLAR" title="Servis noktaları, tek tek." copy="Atabey ve Eğirdir servisleri Salı ve Cuma günleri planlanır. Köy ve Gönen adresleri için gün bilgisi telefonla teyit edilir." />
+        <SectionHead eyebrow="GÜZERGÂHLAR" title="Servis noktaları, tek tek." copy="Atabey ve Eğirdir servisleri Salı ve Cuma günleri planlanır. Köy adresleri için gün bilgisi telefonla teyit edilir." />
         <div className="area-detail-grid">{zones.map(([name, copy, schedule], index) => <article className="area-detail" key={name}>
           <span className="feature-mark">{String(index + 1).padStart(2, '0')}</span>
           <span className="area-schedule">{schedule}</span>
