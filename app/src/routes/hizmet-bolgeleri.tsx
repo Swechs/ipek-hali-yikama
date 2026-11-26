@@ -1,14 +1,11 @@
+import { sitePhotos } from '../lib/site-photos'
+import { createPageHead } from '../lib/seo'
 import { createFileRoute } from '@tanstack/react-router'
 import { ContactBand, PageHero, SectionHead } from '../components/site-ui'
 import { ServiceAreaMap } from '../components/service-area-map'
 
 export const Route = createFileRoute('/hizmet-bolgeleri')({
-  head: () => ({links:[{rel:"canonical",href:"https://www.ispartaipekhaliyikama.com/hizmet-bolgeleri"}],meta:[{property:"og:url",content:"https://www.ispartaipekhaliyikama.com/hizmet-bolgeleri"},
-      { title: 'Isparta Halı Yıkama Servis Bölgeleri | Atabey, Eğirdir — İpek' },
-      { name: 'description', content: 'İpek Halı Yıkama servis bölgeleri: Isparta merkez, Atabey, Eğirdir ve çevre köyler. Atabey ve Eğirdir güzergâhı Salı ve Cuma. Alım ve teslimat ücretsiz.' },
-    ],
-  }),
-  component: Page,
+  head: () => createPageHead('/hizmet-bolgeleri'), component: Page,
 })
 
 const zones = [
@@ -27,7 +24,7 @@ const zones = [
 
 function Page() {
   return <>
-    <PageHero eyebrow="HİZMET BÖLGELERİ" crumbs={['Servis bölgeleri']} title={<>Isparta’da kapınıza<br /><em>uygun servis.</em></>} lead="Merkez ve çevre güzergâhlarda halı alım ve teslimatı ücretsizdir. İlçe servis günleri için adresinizi arayıp teyit edin." />
+    <PageHero photo={sitePhotos.van} eyebrow="HİZMET BÖLGELERİ" crumbs={['Servis bölgeleri']} title={<>Isparta’da kapınıza<br /><em>uygun servis.</em></>} lead="Merkez ve çevre güzergâhlarda halı alım ve teslimatı ücretsizdir. İlçe servis günleri için adresinizi arayıp teyit edin." />
     <section className="section service-map-section">
       <div className="container">
         <SectionHead eyebrow="SERVİS HARİTASI" title="Hizmet bölgelerini haritada görün." copy="İşaretler yerleşim merkezlerini gösterir; evden alım noktası değildir. Haritadaki işaretlere dokunup yeri açabilir, servis saatini telefonla teyit edebilirsiniz." />

@@ -1,14 +1,6 @@
 import { useEffect, useState } from 'react'
-export const photos = {
-  factory: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/1-carpet-washing-machines-4.jpg',
-  carpet: '/images/ipek-hali.jpg',
-  sofa: '/images/ipek-koltuk.jpg',
-  curtain: '/images/ipek-stor-yikama.webp',
-  bedding: '/images/ipek-yorgan.jpg',
-}
-export function servicePhoto(title: string) {
-  return title.toLocaleLowerCase('tr-TR').includes('koltuk') ? photos.sofa : title.toLocaleLowerCase('tr-TR').includes('perde') ? photos.curtain : /yorgan|battaniye/i.test(title) ? photos.bedding : photos.carpet
-}
+export { servicePhoto } from '../lib/site-photos'
+
 const processVideo = 'https://demokrat32com.tevideo.org/demokrat32-com/uploads/2026/06/binlerce-kisinin-uzerinde-yurudugu-o-halitum-yikama-asamalariyla-simdi-karsinizda-bu-videod.mp4'
 const newsUrl = 'https://www.demokrat32.com/binlerce-kisinin-uzerinde-yurudugu-hali-eski-haline-dondu-ipek-hali-yikamadan-dikkat-ceken-temizlik'
 export const instagramReels: { shortcode: string; title: string }[] = [{"shortcode":"DdlvicHkyGA","title":"İpek’ten görüntüler · 1"},{"shortcode":"DcMK_MWtZev","title":"İpek’ten görüntüler · 2"},{"shortcode":"DX15gyXEcdx","title":"İpek’ten görüntüler · 3"}]

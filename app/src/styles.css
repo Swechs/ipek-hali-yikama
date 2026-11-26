@@ -50,12 +50,20 @@ html[data-motion="paused"] .motion-reveal,html[data-motion="paused"] .motion-rev
 .fiber-orbit{width:126%;right:-11%;opacity:1}.fiber-orbit circle{stroke:rgba(56,19,50,.26);stroke-width:1.4}.fiber-orbit circle:nth-child(2){stroke:rgba(0,165,200,.48)}.fiber-orbit path{stroke:rgba(56,19,50,.75);stroke-width:2.3}.fiber-orbit path:nth-of-type(2){stroke:rgba(0,165,200,.95);stroke-width:2.2}.fiber-orbit path:nth-of-type(3){stroke:rgba(201,79,155,.88);stroke-width:2.4}
 @keyframes medallion-turn{to{transform:rotate(360deg)}}
 @media(max-width:560px){.fiber-orbit{width:123%;right:-12%;opacity:.92}.rug-medallion{width:48%;right:0;top:16%;opacity:.24}}
-.textile-ticker{height:43px;overflow:hidden;display:flex;align-items:center;background:#381332;color:#fff;border-block:1px solid rgba(255,255,255,.18)}.ticker-track{min-width:max-content;display:flex;align-items:center;gap:30px;animation:ticker-run 36s linear infinite}.ticker-track span{font:600 10px "DM Mono",monospace;letter-spacing:.2em;white-space:nowrap}.ticker-track i{font-style:normal;color:#4ec5d3;font-size:17px;line-height:1}
+/* A quiet, static service summary. */
+.service-flow{background:#fff;border-bottom:1px solid var(--line);padding:23px 0}
+.service-flow-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.service-flow ol{display:flex;align-items:center;flex-wrap:wrap;gap:22px;list-style:none;margin:0;padding:0}
+.service-flow li{color:#625861;font-family:inherit;font-size:14px;font-weight:500;line-height:1.6;letter-spacing:0}
+.service-flow li+li{padding-left:22px;border-left:1px solid #e7e1e5}
+.service-flow a{flex-shrink:0;color:var(--plum);font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.service-flow a:hover{color:var(--pink)}
+@media(max-width:850px){.service-flow-inner{align-items:flex-start;flex-direction:column;gap:17px}}
+@media(max-width:560px){.service-flow{padding:20px 0}.service-flow ol{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:10px 20px}.service-flow li{font-size:13px}.service-flow li+li{padding-left:0;border-left:0}.service-flow a{font-size:13px}}
 .home-art-panel{translate:calc(var(--parallax-x,0)*8px) calc(var(--parallax-y,0)*6px)}.fiber-orbit{translate:calc(var(--parallax-x,0)*-12px) calc(var(--parallax-y,0)*-10px)}
 .steps{position:relative}.steps:before{content:"";position:absolute;left:18px;top:28px;bottom:28px;width:1px;background:linear-gradient(to bottom,rgba(201,79,155,.1),rgba(0,165,200,.45),rgba(201,79,155,.1))}.step{position:relative}.step-no{position:relative;z-index:1;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,79,155,.28);background:var(--paper);font-size:10px}
-@keyframes ticker-run{to{transform:translateX(-50%)}}
-@media(max-width:560px){.textile-ticker{height:38px}.ticker-track{gap:20px}.ticker-track span{font-size:9px}.ipek-fabs{left:0;right:0;bottom:0;z-index:102;justify-content:center;gap:9px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));background:rgba(252,249,247,.96);border-top:1px solid rgba(56,19,50,.11);backdrop-filter:blur(14px);box-shadow:0 -7px 28px rgba(39,24,39,.1)}.ipek-fab{flex:1;max-width:220px;justify-content:center;padding:11px 13px}.motion-toggle{bottom:calc(68px + env(safe-area-inset-bottom))!important;left:12px!important;font-size:10px;padding:8px 11px}.ipek-footer{padding-bottom:calc(95px + env(safe-area-inset-bottom))}}
-@media(prefers-reduced-motion:reduce){.ticker-track{animation:none!important;transform:none!important}.fiber-orbit{translate:none!important}}
+@media(max-width:560px){.ipek-fabs{left:0;right:0;bottom:0;z-index:102;justify-content:center;gap:9px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));background:rgba(252,249,247,.96);border-top:1px solid rgba(56,19,50,.11);backdrop-filter:blur(14px);box-shadow:0 -7px 28px rgba(39,24,39,.1)}.ipek-fab{flex:1;max-width:220px;justify-content:center;padding:11px 13px}.motion-toggle{bottom:calc(68px + env(safe-area-inset-bottom))!important;left:12px!important;font-size:10px;padding:8px 11px}.ipek-footer{padding-bottom:calc(95px + env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.fiber-orbit{translate:none!important}}
 
 /* Carpet-washing visual system: control, dust removal, wash, rinse, dry, delivery */
 .carpet-wash-scene{position:absolute;inset:-2% -2% 0;width:104%;height:100%;overflow:visible;z-index:0;filter:drop-shadow(0 20px 30px rgba(56,19,50,.12));animation:wash-scene-float 7s ease-in-out infinite alternate}.home-art{overflow:visible}.home-art-panel{position:absolute;right:0;top:25px;width:77%;height:350px;z-index:2;background:linear-gradient(145deg,rgba(56,19,50,.97),rgba(35,17,34,.97));box-shadow:0 34px 76px rgba(56,19,50,.22)}.home-art-panel:before{opacity:.46}.home-art-price{margin-top:48px}.home-art-price strong{font-size:clamp(60px,6.5vw,82px)}.home-art-top,.home-art-bottom{font-size:10px}.wash-water{stroke-dasharray:22 10;animation:water-flow 2.8s linear infinite}.wash-water-two{stroke-dasharray:9 12;animation-duration:2s;animation-direction:reverse}.wash-brush{transform-box:view-box;transform-origin:333px 162px;animation:brush-spin 3.2s linear infinite}.wash-foam{animation:foam-drift 3s ease-in-out infinite alternate}.wash-bubble{animation:bubble-rise 3.5s ease-in-out infinite}.wash-bubble-two{animation-delay:1.3s;animation-duration:4s}.wash-sparkles{animation:sparkle-flash 2.4s ease-in-out infinite alternate}
@@ -234,3 +242,17 @@ body[data-menu-open="true"] .ipek-fabs{display:none}
  .mobile-menu-actions>a{flex:1;min-width:0}
 }
 @media(max-width:560px){.ipek-mobile-menu{height:auto;max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px)}}
+
+/* On-site photographs: preserve the complete frame, equipment and existing logos. */
+.onsite-photo{margin:24px 0;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff}
+.onsite-photo img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+.onsite-photo figcaption{padding:11px 15px;font-size:12px;line-height:1.5;color:var(--muted)}
+.service-hero-photo.onsite-photo{margin:0 0 18px}
+.service-hero-photo.onsite-photo img{height:auto;aspect-ratio:auto;object-fit:contain}
+.page-hero-grid--single{grid-template-columns:minmax(0,1fr)}
+.service-art.service-photo{height:auto;aspect-ratio:16/9;background:#eee8ed}
+.service-photo img{height:100%;object-fit:contain}
+.service-card:hover .service-photo img{transform:none}
+.service-card--no-photo{padding-top:28px}
+.carpet-stage .process-photo,.carpet-stage:nth-child(2) .process-photo{height:auto;aspect-ratio:16/9}
+.carpet-stage:nth-child(n) .process-photo img{position:static;inset:auto;width:100%;height:100%;object-fit:contain;object-position:center}

@@ -1,3 +1,4 @@
+import { SITE_URL, SITE_SCHEMA, jsonLdScript } from '../lib/seo'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -27,7 +28,7 @@ function toOwnAssetUrl(v: string | null | undefined): string | null {
 function buildHead(m: AppMeta) {
   const t = m.og_title ?? "İpek Halı Yıkama — Isparta";
   const d = m.og_description ?? "Isparta İpek Halı Yıkama: Halı yıkama 130 TL/m², ücretsiz alım-teslimat. 0246 242 99 99";
-  const img = m.og_image_url ? new URL(m.og_image_url, "https://www.ispartaipekhaliyikama.com").href : "https://www.ispartaipekhaliyikama.com/ipek-logo.png";
+  const img = m.og_image_url ? new URL(m.og_image_url, SITE_URL).href : "https://www.ispartaipekhaliyikama.com/ipek-logo.png";
   const fav = toOwnAssetUrl(m.favicon_url);
   return {
     meta: [
@@ -55,9 +56,8 @@ function buildHead(m: AppMeta) {
       ...(fav ? [{ rel: "icon", type: "image/svg+xml", href: fav }] : [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }]),
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/site.webmanifest" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-      { rel: "manifest", href: "/site.webmanifest" },
     ],
+    scripts: [jsonLdScript(SITE_SCHEMA)],
   };
 }
 
@@ -110,23 +110,20 @@ function RootComponent() {
 
 function SiteLayout() {
   useEffect(() => {
-    const root=document.documentElement, reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const nodes=Array.from(document.querySelectorAll<HTMLElement>(".section, .home-services, .home-process, .home-area, .home-faq, .ipek-home-hero-inner, .page-hero-grid"));
-    const cards=Array.from(document.querySelectorAll<HTMLElement>(".services-grid > *, .steps > *, .feature-rows > *, .real-reels > *, .area-pills > *, .footer-grid > *"));
-    cards.forEach((node,index)=>{node.style.setProperty("--reveal-order",String(index%6));nodes.push(node)});
-    if(reduced)root.dataset.motion="paused";if(!reduced&&"IntersectionObserver" in window){
-      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.12,rootMargin:"0px 0px -32px 0px"});
-      nodes.forEach(node=>{node.classList.add("motion-reveal");observer.observe(node)});
-      const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;root.style.setProperty("--page-progress",max>0?String(window.scrollY/max):"0")};
-      update();window.addEventListener("scroll",update,{passive:true});
-      const art=document.querySelector<HTMLElement>(".home-art");
-      const parallax=(event:PointerEvent)=>{if(!art)return;const rect=art.getBoundingClientRect();art.style.setProperty("--parallax-x",String((event.clientX-rect.left)/rect.width-.5));art.style.setProperty("--parallax-y",String((event.clientY-rect.top)/rect.height-.5))};
-      const resetParallax=()=>{if(!art)return;art.style.setProperty("--parallax-x","0");art.style.setProperty("--parallax-y","0")};
-      art?.addEventListener("pointermove",parallax,{passive:true});art?.addEventListener("pointerleave",resetParallax);
-      return()=>{observer.disconnect();window.removeEventListener("scroll",update);art?.removeEventListener("pointermove",parallax);art?.removeEventListener("pointerleave",resetParallax);root.style.removeProperty("--page-progress")};
-    }
-    nodes.forEach(node=>node.classList.add("is-visible"));
-  },[]);
+    // Only update the document-level progress value. Mutating classes on
+    // streamed route children can race React's selective hydration.
+    const root = document.documentElement;
+    const update = () => {
+      const max = root.scrollHeight - window.innerHeight;
+      root.style.setProperty("--page-progress", max > 0 ? String(window.scrollY / max) : "0");
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", update);
+      root.style.removeProperty("--page-progress");
+    };
+  }, []);
   return <><div className="silk-progress" aria-hidden="true"/><Header/><main><Outlet/></main><Footer/><Fabs/></>;
 }
 /* ─── PHONE ICON ─── */

@@ -1,4 +1,5 @@
 import "./lib/error-capture";
+import { canonicalRedirect, robotsDirective } from "./lib/server-seo";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
@@ -41,22 +42,19 @@ export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const url = new URL(request.url);
-      if (url.hostname === "ispartaipekhaliyikama.com") {
-        url.protocol = "https:";
-        url.hostname = "www.ispartaipekhaliyikama.com";
-        return Response.redirect(url.href, 301);
-      }
+      const redirect = canonicalRedirect(request.url, request.method);
+      if (redirect) return Response.redirect(redirect, 301);
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       const result = await normalizeCatastrophicSsrResponse(response);
       const headers = new Headers(result.headers);
-      headers.set("X-Robots-Tag", url.hostname === "www.ispartaipekhaliyikama.com" ? "index, follow" : "noindex, follow");
+      headers.set("X-Robots-Tag", robotsDirective(url.hostname, result.status));
       return new Response(result.body, {status: result.status, statusText: result.statusText, headers});
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
         status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
+        headers: { "content-type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex, follow" },
       });
     }
   },

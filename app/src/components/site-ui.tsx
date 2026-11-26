@@ -1,7 +1,49 @@
-import { photos, servicePhoto } from './site-media'
+import { sitePhotos, servicePhoto, type SitePhoto } from '../lib/site-photos'
 import type { ReactNode } from 'react'
 export const PHONE='tel:02462429999', PHONE_TEXT='0246 242 99 99', WA='https://wa.me/905422471836?text=Merhaba%2C%20bilgi%20almak%20istiyorum.'
-export function PageHero({eyebrow,title,lead,crumbs=[],side,tone='light'}:{eyebrow:string;title:ReactNode;lead:string;crumbs?:string[];side?:ReactNode;tone?:'light'|'dark'}){const imageTitle=crumbs[0]??'';const withPhoto=/halı|koltuk|perde|yorgan|battaniye/i.test(imageTitle);return <section className={`page-hero ${tone==='dark'?'page-hero-dark':''}`}><div className="container"><nav className="crumbs" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a>{crumbs.map((c,i)=><span key={c}><i>/</i>{i===crumbs.length-1?<span aria-current="page">{c}</span>:<span>{c}</span>}</span>)}</nav><div className="page-hero-grid"><div><div className="eyebrow"><span className="eyebrow-dot"/>{eyebrow}</div><h1>{title}</h1><p className="page-lead">{lead}</p><div className="hero-actions"><a className="button button-primary" href={PHONE}>Hemen arayın <span className="button-phone">{PHONE_TEXT}</span></a><a className="button button-quiet" href={WA} target="_blank" rel="noreferrer">WhatsApp’tan yazın <span>↗</span></a></div></div>{(side||withPhoto)&&<div className="page-hero-side">{withPhoto&&<figure className="service-hero-photo"><img src={servicePhoto(imageTitle)} alt={imageTitle+' için bakım ve tekstil fotoğrafı'} width="700" height="460"/><figcaption>{imageTitle} · İpek Halı Yıkama</figcaption></figure>}{side}</div>}</div></div></section>}
+export function PhotoFigure({ photo, caption, priority = false, className = '' }: {
+  photo: SitePhoto
+  caption?: string
+  priority?: boolean
+  className?: string
+}) {
+  return <figure className={'onsite-photo ' + className}>
+    <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height}
+      loading={priority ? 'eager' : 'lazy'} decoding="async" fetchPriority={priority ? 'high' : 'auto'} />
+    {caption && <figcaption>{caption}</figcaption>}
+  </figure>
+}
+
+export function PageHero({ eyebrow, title, lead, crumbs = [], side, tone = 'light', photo }: {
+  eyebrow: string; title: ReactNode; lead: string; crumbs?: string[]; side?: ReactNode
+  tone?: 'light' | 'dark'; photo?: SitePhoto
+}) {
+  const image = photo ?? servicePhoto(crumbs[0] ?? '')
+  return <section className={'page-hero ' + (tone === 'dark' ? 'page-hero-dark' : '')}>
+    <div className="container">
+      <nav className="crumbs" aria-label="Sayfa yolu">
+        <a href="/">Ana sayfa</a>
+        {crumbs.map((crumb, index) => <span key={crumb}><i>/</i>
+          <span aria-current={index === crumbs.length - 1 ? 'page' : undefined}>{crumb}</span>
+        </span>)}
+      </nav>
+      <div className={'page-hero-grid' + (side || image ? '' : ' page-hero-grid--single')}>
+        <div>
+          <div className="eyebrow"><span className="eyebrow-dot" />{eyebrow}</div>
+          <h1>{title}</h1><p className="page-lead">{lead}</p>
+          <div className="hero-actions">
+            <a className="button button-primary" href={PHONE}>Hemen arayın <span className="button-phone">{PHONE_TEXT}</span></a>
+            <a className="button button-quiet" href={WA} target="_blank" rel="noreferrer">WhatsApp’tan yazın <span>↗</span></a>
+          </div>
+        </div>
+        {(side || image) && <div className="page-hero-side">
+          {image && <PhotoFigure photo={image} caption={image.alt} priority className="service-hero-photo" />}
+          {side}
+        </div>}
+      </div>
+    </div>
+  </section>
+}
 export function SectionHead({eyebrow,title,copy,light=false}:{eyebrow:string;title:string;copy?:string;light?:boolean}){return <div className={`section-head ${light?'section-head-light':''}`}><div className="eyebrow"><span className="eyebrow-dot"/>{eyebrow}</div><h2>{title}</h2>{copy&&<p>{copy}</p>}</div>}
 export function ContactBand({title='Bir fiyat sorun, birlikte planlayalım.',copy='Telefonla arayın ya da WhatsApp’tan hizmet ve adres bilgilerinizi gönderin.'}:{title?:string;copy?:string}){return <section className="contact-band"><div className="container contact-band-inner"><div><div className="eyebrow eyebrow-light">İPEK HALI YIKAMA · ISPARTA</div><h2>{title}</h2><p>{copy}</p></div><div className="contact-band-actions"><a className="button button-white" href={PHONE}>{PHONE_TEXT}</a><a className="button button-whatsapp" href={WA} target="_blank" rel="noreferrer">WhatsApp’tan yazın ↗</a></div></div></section>}
 export function Steps({items}:{items:{title:string;copy:string}[]}){return <div className="steps">{items.map((s,i)=><article className="step" key={s.title}><span className="step-no">0{i+1}</span><div><h3>{s.title}</h3><p>{s.copy}</p></div></article>)}</div>}
@@ -9,11 +51,19 @@ export function FaqRows({items}:{items:[string,string][]}){return <div className
 export function PriceNote({title='Halı yıkama',price='130',unit='TL / m²',note='6 m² ve altı siparişlerde minimum ücret 780 TL.'}:{title?:string;price?:string;unit?:string;note?:string}){return <div className="price-note"><span className="price-note-label">{title}</span><strong>{price}<small> {unit}</small></strong><p>{note}</p></div>}
 export function FeatureRows({items}:{items:{title:string;copy:string;mark?:string}[]}){return <div className="feature-rows">{items.map((x,i)=><article className="feature-row" key={x.title}><span className="feature-mark">{x.mark??String(i+1).padStart(2,'0')}</span><div><h3>{x.title}</h3><p>{x.copy}</p></div><span className="feature-arrow">↗</span></article>)}</div>}
 
-const carpetStages=[
- {title:'Tür ve durum kontrolü',copy:'Halı türü, dokusu ve varsa özel leke bilgisi değerlendirilir.'},
- {title:'Toz alma',copy:'Yıkama öncesi gevşek toz ve kir uzaklaştırılır.'},
- {title:'Yıkama ve durulama',copy:'Halıya uygun yıkama uygulanır, ardından durulanır.'},
- {title:'Kurutma ve son kontrol',copy:'Kurutma sonrası halı teslimat öncesinde kontrol edilir.'},
- {title:'Teslimat',copy:'Temiz halı adresinize teslim edilmek üzere hazırlanır.'},
+const carpetStages = [
+  { title: 'Yıkama ve durulama', copy: 'Tesisimizde halıya uygun yıkama uygulanır, ardından durulama yapılır.', photo: sitePhotos.washingDetail },
+  { title: 'Sıkma', copy: 'Yıkama sonrasında halıdaki fazla su sıkma makinelerinde uzaklaştırılır.', photo: sitePhotos.spinning },
+  { title: 'Kurutma', copy: 'Sıkma işleminin ardından halılar kurutma bölümüne alınır.', photo: sitePhotos.drying },
+  { title: 'Son kontrol ve paketleme', copy: 'Temiz halılar teslimata hazırlanmadan önce kontrol edilir ve paketlenir.', photo: sitePhotos.packing },
 ]
-export function CarpetStages(){return <div className="carpet-stages" aria-label="Halı yıkama aşamaları">{carpetStages.map((stage,i)=><article className="carpet-stage" key={stage.title}><div className="process-photo"><img src={[photos.carpet,"/images/ipek-toz-alma-v2.jpg",photos.factory,"/images/ipek-kurutma-v2.jpg","/images/ipek-teslimat.jpg"][i]} alt={stage.title + " — halı bakım aşaması"} loading="lazy" width="480"/></div><span className="stage-number">0{i+1}</span><h3>{stage.title}</h3><p>{stage.copy}</p></article>)}</div>}
+export function CarpetStages() {
+  return <div className="carpet-stages" aria-label="Tesisimizden halı yıkama aşamaları">
+    {carpetStages.map((stage, index) => <article className="carpet-stage" key={stage.title}>
+      <div className="process-photo"><img src={stage.photo.src} alt={stage.photo.alt}
+        loading="lazy" decoding="async" width={stage.photo.width} height={stage.photo.height} /></div>
+      <span className="stage-number">{String(index + 1).padStart(2, '0')}</span>
+      <h3>{stage.title}</h3><p>{stage.copy}</p>
+    </article>)}
+  </div>
+}
