@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import 'leaflet/dist/leaflet.css'
 
 type ServicePoint = {
   name: string
@@ -30,7 +29,8 @@ export function ServiceAreaMap() {
     let map: import('leaflet').Map | undefined
     let cancelled = false
 
-    void import('leaflet').then((leaflet) => {
+    // Harita kütüphanesi ve karolar yalnız harita ekrana yaklaşınca yüklenir.
+    const load = () => void Promise.all([import('leaflet'), import('leaflet/dist/leaflet.css')]).then(([leaflet]) => {
       if (cancelled || !mapElement.current) return
       map = leaflet.map(mapElement.current, {
         zoomControl: false,
@@ -67,7 +67,13 @@ export function ServiceAreaMap() {
       if (mapElement.current) mapElement.current.dataset.mapError = 'true'
     })
 
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { io.disconnect(); load() }
+    }, { rootMargin: '300px' })
+    if (mapElement.current) io.observe(mapElement.current)
+
     return () => {
+      io.disconnect()
       cancelled = true
       map?.remove()
     }

@@ -1,10 +1,14 @@
 import { sitePhotos } from './site-photos'
 export const SITE_URL = 'https://www.ispartaipekhaliyikama.com'
 export const SITE_HOST = 'www.ispartaipekhaliyikama.com'
+export const GOOGLE_PROFILE_URL = 'https://share.google/LALgrnjImNq55lYIv'
+export const INSTAGRAM_URL = 'https://www.instagram.com/ispartaipekhaliyikama/'
 export const BUSINESS_ID = SITE_URL + '/#business'
 export const WEBSITE_ID = SITE_URL + '/#website'
 export const SHARE_IMAGE = SITE_URL + sitePhotos.washing.src
 export const HERO_POSTER = sitePhotos.washing.src
+export const HERO_POSTER_WEBP_800 = '/images/isparta-ipek-hali-yikama-hatti-800.webp'
+export const HERO_POSTER_WEBP_1440 = '/images/isparta-ipek-hali-yikama-hatti-1440.webp'
 
 // The same page inventory supplies metadata, breadcrumbs and the XML sitemap.
 export const PAGES = {
@@ -18,14 +22,19 @@ export const PAGES = {
     "description": "Halı yıkama fiyat hesabı, teslimat süresi, Atabey ve Eğirdir servis günleri; koltuk, stor perde ve yorgan yıkama hakkında pratik bilgiler.",
     "breadcrumb": "Bilgi merkezi"
   },
+  "/cerez-politikasi": {
+    "title": "Çerez ve Gizlilik Politikası | İpek Halı Yıkama",
+    "description": "İpek Halı Yıkama web sitesinde kullanılan çerezler, Google reklam ölçümü, kişisel verilerin işlenmesi ve KVKK kapsamındaki haklarınız hakkında bilgilendirme.",
+    "breadcrumb": "Çerez ve gizlilik politikası"
+  },
   "/hakkimizda": {
     "title": "Hakkımızda | İpek Halı Yıkama Isparta",
     "description": "İpek Halı Yıkama, 2014’te Isparta’da kurulmuş aile işletmesidir. Halı, koltuk, perde ve yorgan yıkama hizmetlerimiz hakkında bilgi alın.",
     "breadcrumb": "Hakkımızda"
   },
   "/hali-yikama": {
-    "title": "Isparta Sıcak Su ile Halı Yıkama | İpek Halı Yıkama",
-    "description": "Isparta’da özel sıcak su sistemiyle halı yıkama. 130 TL/m², minimum 780 TL. Ücretsiz adresten alım ve teslimat. İpek Halı Yıkama: 0246 242 99 99.",
+    "title": "Isparta Halı Yıkama | 25 Fırçalı Sistem – İpek Halı Yıkama",
+    "description": "İpek Halı Yıkama’da halılarınız önce çırpma makinesinden geçirilir, 25 fırçalı sistemde sıcak suyla yıkanır, 3 bar basınçla durulanır, kapalı odalarda kurutulur ve otomatik poşetlenir.",
     "breadcrumb": "Halı yıkama"
   },
   "/hizmet-bolgeleri": {
@@ -39,28 +48,28 @@ export const PAGES = {
     "breadcrumb": "İletişim"
   },
   "/koltuk-yikama": {
-    "title": "Isparta Koltuk Yıkama | Takım 2.500 TL — İpek Halı Yıkama",
-    "description": "Isparta’da koltuk yıkama. Koltuk takımı 2.500 TL. Randevu ve hizmet kapsamı için 0246 242 99 99.",
+    "title": "Isparta Koltuk Yıkama | Yerinde Hizmet – İpek Halı Yıkama",
+    "description": "Isparta’da koltuklarınızı evinizde yerinde yıkıyoruz. 3+3+1+1 koltuk takımı 2.500 TL; farklı takımlar için fiyat alın. Randevu: 0246 242 99 99.",
     "breadcrumb": "Koltuk yıkama"
   },
   "/nasil-yikanir": {
-    "title": "Halı Nasıl Yıkanır? | İpek Halı Yıkama Isparta",
-    "description": "Halı yıkama süreci: halı türünün kontrolü, toz alma, yıkama, durulama, kurutma ve son kontrol. Isparta İpek Halı Yıkama.",
+    "title": "7 Aşamalı Halı Yıkama Sistemi | İpek Halı Yıkama Isparta",
+    "description": "Çırpma, 25 fırçalı sıcak su yıkama, 3 bar durulama, sıkma, kapalı kurutma, paketleme ve otomatik poşetleme. İpek Halı Yıkama’nın 7 aşamalı sistemi.",
     "breadcrumb": "Nasıl yıkanır?"
   },
   "/perde-yikama": {
-    "title": "Isparta Stor Perde Yıkama | İpek Halı Yıkama",
-    "description": "Isparta’da stor perde yıkama hizmeti. Güncel fiyat ve servis bilgisi için 0246 242 99 99.",
+    "title": "Isparta Stor Perde Yıkama | Makineli Sistem – İpek Halı Yıkama",
+    "description": "Isparta’da stor perdeleriniz özel stor perde yıkama makinesinde temizlenir. Perde türü ve ölçüsüne göre fiyat için 0246 242 99 99.",
     "breadcrumb": "Stor perde yıkama"
   },
   "/sss": {
     "title": "Sık Sorulan Sorular | İpek Halı Yıkama Isparta",
-    "description": "İpek Halı Yıkama fiyatları, minimum sipariş tutarı, ücretsiz servis, teslimat süresi, koltuk ve perde hizmetleri hakkında sık sorulan sorular.",
+    "description": "İpek Halı Yıkama’da halılar nasıl yıkanır, kaç günde teslim edilir, yerinde koltuk yıkama, stor perde, yorgan ve kredi kartıyla ödeme hakkında sorular.",
     "breadcrumb": "Sık sorulan sorular"
   },
   "/yorgan-battaniye-yikama": {
     "title": "Isparta Yorgan ve Battaniye Yıkama | İpek Halı Yıkama",
-    "description": "Isparta’da yorgan ve battaniye yıkama hizmeti. Fiyat, alım ve teslimat bilgisi için İpek Halı Yıkama’yı arayın: 0246 242 99 99.",
+    "description": "Isparta’da yorgan ve battaniye yıkama. Ürün türüne uygun yıkama ve güncel fiyat bilgisi için İpek Halı Yıkama’yı arayın: 0246 242 99 99.",
     "breadcrumb": "Yorgan ve battaniye"
   },
 } as const
@@ -82,6 +91,7 @@ export const SITE_SCHEMA = {
       '@type': 'LocalBusiness',
       '@id': BUSINESS_ID,
       name: 'İpek Halı Yıkama',
+      alternateName: 'İpek Halı ve Koltuk Yıkama',
       url: SITE_URL + '/',
       telephone: '+902462429999',
       description: 'Isparta’da halı, koltuk, stor perde, yorgan ve battaniye yıkama. Hizmet bölgelerinde ücretsiz halı alım ve teslimatı.',
@@ -101,6 +111,9 @@ export const SITE_SCHEMA = {
         availableLanguage: 'Turkish',
         url: 'https://wa.me/905422471836',
       },
+      paymentAccepted: 'Kredi kartı',
+      hasMap: GOOGLE_PROFILE_URL,
+      sameAs: [INSTAGRAM_URL, GOOGLE_PROFILE_URL],
       openingHoursSpecification: [{
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -154,7 +167,7 @@ const SERVICES: Partial<Record<PagePath, ServiceDetails>> = {
       '@type': 'Offer',
       price: '2500',
       priceCurrency: 'TRY',
-      description: 'Koltuk takımı yıkama. Takım kapsamı ve randevu uygunluğu sipariş öncesinde teyit edilir.',
+      description: '3+3+1+1 koltuk takımı, müşterinin evinde yerinde yıkama. Farklı koltuk takımları için fiyat ayrıca belirlenir.',
     },
   },
   '/perde-yikama': { name: 'Isparta stor perde yıkama' },
@@ -224,7 +237,7 @@ export function createPageHead(path: PagePath) {
   return {
     links: [
       { rel: 'canonical', href: url },
-      ...(path === '/' ? [{ rel: 'preload', as: 'image', href: HERO_POSTER, fetchPriority: 'high' as const }] : []),
+      ...(path === '/' ? [{ rel: 'preload', as: 'image', type: 'image/webp', href: HERO_POSTER_WEBP_1440, imageSrcSet: HERO_POSTER_WEBP_800 + ' 800w, ' + HERO_POSTER_WEBP_1440 + ' 1440w', imageSizes: '100vw', fetchPriority: 'high' as const }] : []),
     ],
     meta: [
       { title: page.title },

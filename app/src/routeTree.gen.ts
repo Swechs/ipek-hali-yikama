@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CerezPolitikasiRouteImport } from './routes/cerez-politikasi'
 import { Route as HakkimizdaRouteImport } from './routes/hakkimizda'
 import { Route as HaliYikamaRouteImport } from './routes/hali-yikama'
 import { Route as HizmetBolgeleriRouteImport } from './routes/hizmet-bolgeleri'
@@ -31,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CerezPolitikasiRoute = CerezPolitikasiRouteImport.update({
+  id: '/cerez-politikasi',
+  path: '/cerez-politikasi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HakkimizdaRoute = HakkimizdaRouteImport.update({
@@ -92,6 +98,7 @@ const YorganBattaniyeYikamaRoute = YorganBattaniyeYikamaRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hali-yikama': typeof HaliYikamaRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hali-yikama': typeof HaliYikamaRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hali-yikama': typeof HaliYikamaRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/blog'
+    | '/cerez-politikasi'
     | '/hakkimizda'
     | '/hali-yikama'
     | '/hizmet-bolgeleri'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/blog'
+    | '/cerez-politikasi'
     | '/hakkimizda'
     | '/hali-yikama'
     | '/hizmet-bolgeleri'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/blog'
+    | '/cerez-politikasi'
     | '/hakkimizda'
     | '/hali-yikama'
     | '/hizmet-bolgeleri'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRoute
+  CerezPolitikasiRoute: typeof CerezPolitikasiRoute
   HakkimizdaRoute: typeof HakkimizdaRoute
   HaliYikamaRoute: typeof HaliYikamaRoute
   HizmetBolgeleriRoute: typeof HizmetBolgeleriRoute
@@ -213,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cerez-politikasi': {
+      id: '/cerez-politikasi'
+      path: '/cerez-politikasi'
+      fullPath: '/cerez-politikasi'
+      preLoaderRoute: typeof CerezPolitikasiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hakkimizda': {
@@ -298,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRoute,
+  CerezPolitikasiRoute: CerezPolitikasiRoute,
   HakkimizdaRoute: HakkimizdaRoute,
   HaliYikamaRoute: HaliYikamaRoute,
   HizmetBolgeleriRoute: HizmetBolgeleriRoute,

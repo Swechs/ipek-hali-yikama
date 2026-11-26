@@ -32,6 +32,7 @@ function loader(ssrFetch = () => new Response('<html></html>', { headers: { 'con
       if (specifier === '@tanstack/react-router') return {
         createFileRoute: routePath => options => ({ ...options, path: routePath }),
         createRootRouteWithContext: () => options => options,
+        createRootRoute: options => options,
       }
       if (specifier === '@tanstack/react-start/server-entry') return { __esModule: true, default: { fetch: ssrFetch } }
       if (specifier === 'react' || specifier === 'react/jsx-runtime' || specifier === '@tanstack/react-query') return {}
@@ -84,14 +85,18 @@ test('every public route returns a unique canonical and matching search/social m
     assert.equal(head.meta.find(meta => meta.property === 'og:url').content, canonical)
     assert.ok(title.includes('İpek') && description.length > 40)
   }
-  assert.equal(canonicals.size, 11)
+  assert.equal(canonicals.size, 12)
 })
 
 test('site identity has the published address, hours, working local assets and one consistent phone', () => {
   const root = load('src/routes/__root.tsx').Route.head()
   assert.equal(root.links.filter(link => link.rel === 'manifest').length, 1)
   assert.equal(root.links.filter(link => link.rel === 'apple-touch-icon').length, 1)
-  const graph = JSON.parse(root.scripts[0].children)['@graph']
+  const graph = JSON.parse(root.scripts.find(script => script.type === 'application/ld+json').children)['@graph']
+  const ads = root.scripts.filter(script => script.children?.includes('AW-881695776'))
+  assert.equal(ads.length, 1)
+  assert.match(ads[0].children, /AW-881695776\/ITYgCJqXzL8dEKC4tqQD/)
+  assert.match(ads[0].children, /AW-881695776\/KvyiCJ2XzL8dEKC4tqQD/)
   const business = graph.find(node => node['@type'] === 'LocalBusiness')
   assert.equal(business.telephone, '+902462429999')
   assert.equal(business.contactPoint.telephone, '+905422471836')
