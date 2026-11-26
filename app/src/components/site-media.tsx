@@ -1,14 +1,6 @@
-import { useEffect, useState } from 'react'
-export const photos = {
-  factory: 'https://ispartaipekhaliyikama.com/wp-content/uploads/2024/11/1-carpet-washing-machines-4.jpg',
-  carpet: '/images/ipek-hali.jpg',
-  sofa: '/images/ipek-koltuk.jpg',
-  curtain: '/images/ipek-stor-yikama.webp',
-  bedding: '/images/ipek-yorgan.jpg',
-}
-export function servicePhoto(title: string) {
-  return title.toLocaleLowerCase('tr-TR').includes('koltuk') ? photos.sofa : title.toLocaleLowerCase('tr-TR').includes('perde') ? photos.curtain : /yorgan|battaniye/i.test(title) ? photos.bedding : photos.carpet
-}
+import { useEffect, useRef, useState } from 'react'
+export { servicePhoto } from '../lib/site-photos'
+
 const processVideo = 'https://demokrat32com.tevideo.org/demokrat32-com/uploads/2026/06/binlerce-kisinin-uzerinde-yurudugu-o-halitum-yikama-asamalariyla-simdi-karsinizda-bu-videod.mp4'
 const newsUrl = 'https://www.demokrat32.com/binlerce-kisinin-uzerinde-yurudugu-hali-eski-haline-dondu-ipek-hali-yikamadan-dikkat-ceken-temizlik'
 export const instagramReels: { shortcode: string; title: string }[] = [{"shortcode":"DdlvicHkyGA","title":"İpek’ten görüntüler · 1"},{"shortcode":"DcMK_MWtZev","title":"İpek’ten görüntüler · 2"},{"shortcode":"DX15gyXEcdx","title":"İpek’ten görüntüler · 3"}]
@@ -24,10 +16,19 @@ function AdditionalVideo() {
 
 function DirectReel() {
   const [autoplay, setAutoplay] = useState(false)
-  useEffect(() => { setAutoplay(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) }, [])
-  return <article className="video-card"><div className="video-player">
-    <video controls playsInline muted autoPlay={autoplay} loop preload="metadata" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/6ca55eb6-ee59-4e15-94da-4fa25e8ea509.jpg" aria-label="İpek Halı Yıkama Instagram videosu"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/8c1a5631-e5a9-4880-9ece-17bcf20d3d20.mp4" type="video/mp4"/></video>
-    </div><div className="video-info"><span>İPEK’TEN GÖRÜNTÜLER</span><h3>Sıcak su ile halı yıkama</h3><p>Halılarınızı özel sıcak su sistemimizle yıkıyoruz. İpek Halı Yıkama olarak bu hizmeti Türkiye’de sunan tek işletme olduğumuzu belirtiyoruz.</p><a href="https://www.instagram.com/reel/DcMK_MWtZev/" target="_blank" rel="noreferrer">Instagram’daki paylaşım ↗</a></div></article>
+  const card = useRef<HTMLElement>(null)
+  // Video yalnız ekrana yaklaşınca yüklenir; ilk açılışta indirme yapılmaz.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !card.current) return
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { setAutoplay(true); io.disconnect() }
+    }, { rootMargin: '200px' })
+    io.observe(card.current)
+    return () => io.disconnect()
+  }, [])
+  return <article className="video-card" ref={card}><div className="video-player">
+    <video key={autoplay ? 'on' : 'off'} controls playsInline muted autoPlay={autoplay} loop preload={autoplay ? 'auto' : 'none'} poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/6ca55eb6-ee59-4e15-94da-4fa25e8ea509.jpg" aria-label="İpek Halı Yıkama Instagram videosu"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3K2NGMxq0ZOTGBGLEHzm2JEeqiS/8c1a5631-e5a9-4880-9ece-17bcf20d3d20.mp4" type="video/mp4"/></video>
+    </div><div className="video-info"><span>İPEK’TEN GÖRÜNTÜLER</span><h3>Sıcak su ile halı yıkama</h3><p>Halılarınızı özel sıcak su sistemimizle yıkıyoruz.</p><a href="https://www.instagram.com/reel/DcMK_MWtZev/" target="_blank" rel="noreferrer">Instagram’daki paylaşım ↗</a></div></article>
 }
 
 export function VideoGallery() {
@@ -36,7 +37,7 @@ export function VideoGallery() {
   return <section className="section section-paper media-section" id="videolar">
     <div className="container">
       <div className="media-heading"><div><div className="eyebrow"><span className="eyebrow-dot"/>İŞİMİZİN İÇİNDEN</div><h2>Temizliğin her aşamasını izleyin.</h2><p>İpek Halı Yıkama’dan gerçek görüntüler, yıkama süreci ve tanıtım filmi.</p></div>
-      <a className="button button-quiet" href="https://www.instagram.com/ispartaipekhaliyikamaofficial/" target="_blank" rel="noreferrer">Instagram hesabımız ↗</a></div>
+      <a className="button button-quiet" href="https://www.instagram.com/ispartaipekhaliyikama/" target="_blank" rel="noreferrer">Instagram hesabımız ↗</a></div>
       <div className="video-grid">
         <article className="video-card"><div className="video-player">{videoError ? <div className="video-unavailable"><p>Video şu anda yüklenemiyor.</p><a className="button button-white" href={newsUrl} target="_blank" rel="noreferrer">Kaynağında izle ↗</a></div> :
           <video controls playsInline preload="none" poster="https://demokrat32com.teimg.com/crop/1280x720/demokrat32-com/uploads/2026/06/ipk-1.jpg" onError={() => setVideoError(true)} aria-label="İpek Halı Yıkama: halının yıkama aşamaları"><source src={processVideo} type="video/mp4"/>Tarayıcınız video oynatmayı desteklemiyor. <a href={newsUrl}>Videoyu izleyin</a></video>}</div>

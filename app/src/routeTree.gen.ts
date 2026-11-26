@@ -9,73 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as YorganBattaniyeYikamaRouteImport } from './routes/yorgan-battaniye-yikama'
-import { Route as SssRouteImport } from './routes/sss'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
-import { Route as PerdeYikamaRouteImport } from './routes/perde-yikama'
-import { Route as NasilYikanirRouteImport } from './routes/nasil-yikanir'
-import { Route as KoltukYikamaRouteImport } from './routes/koltuk-yikama'
-import { Route as IletisimRouteImport } from './routes/iletisim'
-import { Route as HizmetBolgeleriRouteImport } from './routes/hizmet-bolgeleri'
-import { Route as HaliYikamaRouteImport } from './routes/hali-yikama'
-import { Route as HakkimizdaRouteImport } from './routes/hakkimizda'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CerezPolitikasiRouteImport } from './routes/cerez-politikasi'
+import { Route as HakkimizdaRouteImport } from './routes/hakkimizda'
+import { Route as HaliYikamaRouteImport } from './routes/hali-yikama'
+import { Route as HizmetBolgeleriRouteImport } from './routes/hizmet-bolgeleri'
+import { Route as IletisimRouteImport } from './routes/iletisim'
+import { Route as KoltukYikamaRouteImport } from './routes/koltuk-yikama'
+import { Route as NasilYikanirRouteImport } from './routes/nasil-yikanir'
+import { Route as PerdeYikamaRouteImport } from './routes/perde-yikama'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SssRouteImport } from './routes/sss'
+import { Route as YorganBattaniyeYikamaRouteImport } from './routes/yorgan-battaniye-yikama'
 
-const YorganBattaniyeYikamaRoute = YorganBattaniyeYikamaRouteImport.update({
-  id: '/yorgan-battaniye-yikama',
-  path: '/yorgan-battaniye-yikama',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SssRoute = SssRouteImport.update({
-  id: '/sss',
-  path: '/sss',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
-  id: '/robots.txt',
-  path: '/robots.txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PerdeYikamaRoute = PerdeYikamaRouteImport.update({
-  id: '/perde-yikama',
-  path: '/perde-yikama',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NasilYikanirRoute = NasilYikanirRouteImport.update({
-  id: '/nasil-yikanir',
-  path: '/nasil-yikanir',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KoltukYikamaRoute = KoltukYikamaRouteImport.update({
-  id: '/koltuk-yikama',
-  path: '/koltuk-yikama',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IletisimRoute = IletisimRouteImport.update({
-  id: '/iletisim',
-  path: '/iletisim',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HizmetBolgeleriRoute = HizmetBolgeleriRouteImport.update({
-  id: '/hizmet-bolgeleri',
-  path: '/hizmet-bolgeleri',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HaliYikamaRoute = HaliYikamaRouteImport.update({
-  id: '/hali-yikama',
-  path: '/hali-yikama',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HakkimizdaRoute = HakkimizdaRouteImport.update({
-  id: '/hakkimizda',
-  path: '/hakkimizda',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -83,15 +34,71 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const CerezPolitikasiRoute = CerezPolitikasiRouteImport.update({
+  id: '/cerez-politikasi',
+  path: '/cerez-politikasi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HakkimizdaRoute = HakkimizdaRouteImport.update({
+  id: '/hakkimizda',
+  path: '/hakkimizda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HaliYikamaRoute = HaliYikamaRouteImport.update({
+  id: '/hali-yikama',
+  path: '/hali-yikama',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HizmetBolgeleriRoute = HizmetBolgeleriRouteImport.update({
+  id: '/hizmet-bolgeleri',
+  path: '/hizmet-bolgeleri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IletisimRoute = IletisimRouteImport.update({
+  id: '/iletisim',
+  path: '/iletisim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KoltukYikamaRoute = KoltukYikamaRouteImport.update({
+  id: '/koltuk-yikama',
+  path: '/koltuk-yikama',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NasilYikanirRoute = NasilYikanirRouteImport.update({
+  id: '/nasil-yikanir',
+  path: '/nasil-yikanir',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerdeYikamaRoute = PerdeYikamaRouteImport.update({
+  id: '/perde-yikama',
+  path: '/perde-yikama',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SssRoute = SssRouteImport.update({
+  id: '/sss',
+  path: '/sss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YorganBattaniyeYikamaRoute = YorganBattaniyeYikamaRouteImport.update({
+  id: '/yorgan-battaniye-yikama',
+  path: '/yorgan-battaniye-yikama',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hali-yikama': typeof HaliYikamaRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hali-yikama': typeof HaliYikamaRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/hakkimizda': typeof HakkimizdaRoute
   '/hali-yikama': typeof HaliYikamaRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/blog'
+    | '/cerez-politikasi'
     | '/hakkimizda'
     | '/hali-yikama'
     | '/hizmet-bolgeleri'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/blog'
+    | '/cerez-politikasi'
     | '/hakkimizda'
     | '/hali-yikama'
     | '/hizmet-bolgeleri'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/blog'
+    | '/cerez-politikasi'
     | '/hakkimizda'
     | '/hali-yikama'
     | '/hizmet-bolgeleri'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRoute
+  CerezPolitikasiRoute: typeof CerezPolitikasiRoute
   HakkimizdaRoute: typeof HakkimizdaRoute
   HaliYikamaRoute: typeof HaliYikamaRoute
   HizmetBolgeleriRoute: typeof HizmetBolgeleriRoute
@@ -201,81 +214,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/yorgan-battaniye-yikama': {
-      id: '/yorgan-battaniye-yikama'
-      path: '/yorgan-battaniye-yikama'
-      fullPath: '/yorgan-battaniye-yikama'
-      preLoaderRoute: typeof YorganBattaniyeYikamaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sss': {
-      id: '/sss'
-      path: '/sss'
-      fullPath: '/sss'
-      preLoaderRoute: typeof SssRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots.txt': {
-      id: '/robots.txt'
-      path: '/robots.txt'
-      fullPath: '/robots.txt'
-      preLoaderRoute: typeof RobotsDottxtRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/perde-yikama': {
-      id: '/perde-yikama'
-      path: '/perde-yikama'
-      fullPath: '/perde-yikama'
-      preLoaderRoute: typeof PerdeYikamaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nasil-yikanir': {
-      id: '/nasil-yikanir'
-      path: '/nasil-yikanir'
-      fullPath: '/nasil-yikanir'
-      preLoaderRoute: typeof NasilYikanirRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/koltuk-yikama': {
-      id: '/koltuk-yikama'
-      path: '/koltuk-yikama'
-      fullPath: '/koltuk-yikama'
-      preLoaderRoute: typeof KoltukYikamaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/iletisim': {
-      id: '/iletisim'
-      path: '/iletisim'
-      fullPath: '/iletisim'
-      preLoaderRoute: typeof IletisimRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hizmet-bolgeleri': {
-      id: '/hizmet-bolgeleri'
-      path: '/hizmet-bolgeleri'
-      fullPath: '/hizmet-bolgeleri'
-      preLoaderRoute: typeof HizmetBolgeleriRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hali-yikama': {
-      id: '/hali-yikama'
-      path: '/hali-yikama'
-      fullPath: '/hali-yikama'
-      preLoaderRoute: typeof HaliYikamaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hakkimizda': {
-      id: '/hakkimizda'
-      path: '/hakkimizda'
-      fullPath: '/hakkimizda'
-      preLoaderRoute: typeof HakkimizdaRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -285,11 +228,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/cerez-politikasi': {
+      id: '/cerez-politikasi'
+      path: '/cerez-politikasi'
+      fullPath: '/cerez-politikasi'
+      preLoaderRoute: typeof CerezPolitikasiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hakkimizda': {
+      id: '/hakkimizda'
+      path: '/hakkimizda'
+      fullPath: '/hakkimizda'
+      preLoaderRoute: typeof HakkimizdaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hali-yikama': {
+      id: '/hali-yikama'
+      path: '/hali-yikama'
+      fullPath: '/hali-yikama'
+      preLoaderRoute: typeof HaliYikamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hizmet-bolgeleri': {
+      id: '/hizmet-bolgeleri'
+      path: '/hizmet-bolgeleri'
+      fullPath: '/hizmet-bolgeleri'
+      preLoaderRoute: typeof HizmetBolgeleriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iletisim': {
+      id: '/iletisim'
+      path: '/iletisim'
+      fullPath: '/iletisim'
+      preLoaderRoute: typeof IletisimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/koltuk-yikama': {
+      id: '/koltuk-yikama'
+      path: '/koltuk-yikama'
+      fullPath: '/koltuk-yikama'
+      preLoaderRoute: typeof KoltukYikamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nasil-yikanir': {
+      id: '/nasil-yikanir'
+      path: '/nasil-yikanir'
+      fullPath: '/nasil-yikanir'
+      preLoaderRoute: typeof NasilYikanirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perde-yikama': {
+      id: '/perde-yikama'
+      path: '/perde-yikama'
+      fullPath: '/perde-yikama'
+      preLoaderRoute: typeof PerdeYikamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sss': {
+      id: '/sss'
+      path: '/sss'
+      fullPath: '/sss'
+      preLoaderRoute: typeof SssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yorgan-battaniye-yikama': {
+      id: '/yorgan-battaniye-yikama'
+      path: '/yorgan-battaniye-yikama'
+      fullPath: '/yorgan-battaniye-yikama'
+      preLoaderRoute: typeof YorganBattaniyeYikamaRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -298,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRoute,
+  CerezPolitikasiRoute: CerezPolitikasiRoute,
   HakkimizdaRoute: HakkimizdaRoute,
   HaliYikamaRoute: HaliYikamaRoute,
   HizmetBolgeleriRoute: HizmetBolgeleriRoute,
